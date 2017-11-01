@@ -1,0 +1,26 @@
+<div class="form-container">
+  <h1>New Classroom Form</h1>
+
+
+  <%= form_for [@school, @classroom] do |c| %>
+
+    <div class="field">
+      <%= c.label :name %>
+      <%= c.text_field :name %>
+    </div>
+    <div class="field">
+      <%= c.label :description %>
+      <%= c.text_field :description %>
+    </div>
+    <div class="actions">
+      <%= c.button "Create Classroom" %>
+    </div>
+
+  <% end %>
+
+  <% if @form_errors %>
+    <% @form_errors.each do |error| %>
+      <p><%= error %></p>
+    <% end %>
+  <% end %>
+</div>

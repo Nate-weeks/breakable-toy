@@ -1,8 +1,9 @@
-<h1><%= @classroom.name %></h1>
-<h2><%= @classroom.description %></h2>
-<h3> teachers: </h3>
-<% @teachers.each do |teacher| %>
- <p><%= teacher.first_name %> <%= teacher.last_name %></p>
-  <% end %>
-
+<div class="classroom-info">
+  <h1 class="classroom-name"><%= @classroom.name %></h1>
+  <h1 class="classroom-description"><%= @classroom.description %></h2>
+  <h2 class="teachers"> teachers: </h3>
+  <% @teachers.each do |teacher| %>
+   <p class="teacher-name"><%= teacher.first_name %> <%= teacher.last_name %></p>
+    <% end %>
+</div>
 <div id=app></div>

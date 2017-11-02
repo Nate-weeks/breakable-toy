@@ -1,0 +1,37 @@
+.student-form{
+  width: 40%;
+  border: 0.1rem solid black;
+  margin: 0 auto;
+  background-color: #7C97CE;
+  color: black;
+}
+
+label{
+  color: black;
+  font-size: 1.2rem;
+}
+
+.submit-button{
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  background-color: #84CFAF;
+  color: black;
+}
+
+button{
+  font-size: 1.2rem;
+}
+
+button:hover{
+  color: black;
+  background-color: #BDEDAF;
+}
+
+button:focus{
+  color: black;
+}
+
+.student-form-header{
+  text-align: center;
+}

@@ -1,9 +1,10 @@
-<%= link_to "sign in", new_user_session_path %>
-<%= link_to "sign up", new_user_registration_path %>
- <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
- <%= link_to "create new school", new_school_path %> 
+<div class="new-school">
+  <a class="create-new-school"<%= link_to "create new school", new_school_path %></a>
+</div>
 
 <% @schools.each do |school| %>
+  <div class="schools">
   <h1><%= link_to school.name, school_path(school.id) %></h1>
   <h2><%= school.description %></h2>
   <% end %>
+  </div>

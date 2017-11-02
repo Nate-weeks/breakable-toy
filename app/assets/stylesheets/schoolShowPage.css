@@ -1,0 +1,19 @@
+.new-classroom{
+  background-color: #84CFAF;
+  height: 4rem;
+  text-align: center;
+}
+
+.create-classroom{
+  background-color: #84CFAF;
+  font-size: 1.3rem;
+  color: black;
+}
+
+.school-name{
+  text-align: center;
+}
+
+.school-description{
+  text-align: center;
+}

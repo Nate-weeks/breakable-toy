@@ -1,7 +1,9 @@
-<%= link_to "Create a new classroom", new_school_classroom_path(params[:id]) %>
-<h1><%= @school.name %></h1>
-<h2><%= @school.description %><h2>
+<div class="new-classroom">
+  <button class="create-classroom"><%= link_to "Create a new classroom", new_school_classroom_path(params[:id]) %></button>
+</div>
+<h1 class="school-name"><%= @school.name %></h1>
+<h2 class="school-description"><%= @school.description %><h2>
 <% @classrooms.each do |classroom|%>
-<h3><%= link_to classroom.name, school_classroom_path(@school, classroom.id) %></h3>
-<h4><%= classroom.description %><h4>
+<h3>Classroom: <%= link_to classroom.name, school_classroom_path(@school, classroom.id) %></h3>
+<h4>Description: <%= classroom.description %><h4>
 <% end %>

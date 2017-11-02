@@ -73,7 +73,7 @@ class NewStudentFormContainer extends Component {
     <h3 className='student-form-header'>New Student</h3>
     <ul>{errors}</ul>
     <label>First Name
-      <textarea
+      <input
         name={"firstName"}
         value={this.state.firstName}
         onChange={this.handleChange}
@@ -82,7 +82,7 @@ class NewStudentFormContainer extends Component {
     </label>
 
     <label>Last Name
-      <textarea
+      <input
         name={"lastName"}
         value={this.state.lastName}
         onChange={this.handleChange}
@@ -100,7 +100,7 @@ class NewStudentFormContainer extends Component {
     </label>
 
     <label>Age
-      <textarea
+      <input
         name={"age"}
         value={this.state.age}
         onChange={this.handleChange}
@@ -109,7 +109,7 @@ class NewStudentFormContainer extends Component {
     </label>
 
     <label>Phone Number
-      <textarea
+      <input
         name={"contactNumber"}
         value={this.state.contactNumber}
         onChange={this.handleChange}

@@ -2,15 +2,19 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import StudentTile from '../components/StudentTile'
 import NewStudentFormContainer from './NewStudentFormContainer'
+import ToggleFormButton from '../components/ToggleFormButton'
 
 
 class IndexPage extends Component{
   constructor(props){
     super(props)
     this.state = {
-      studentsArray: []
+      studentsArray: [],
+      toggle: false,
+      toggleClass: 'toggle-button-false'
     }
     this.addNewStudent = this.addNewStudent.bind(this)
+    this.handleToggle = this.handleToggle.bind(this)
   }
 
   componentDidMount() {
@@ -52,7 +56,38 @@ class IndexPage extends Component{
         })
     }
 
+    handleToggle(){
+      if (this.state.toggle == false) {
+        this.setState({
+          toggle: true,
+          toggleClass: 'toggle-button-true'
+         })
+      } else {
+        this.setState({
+        toggle: false,
+        toggleClass: 'toggle-button-false'
+        })
+      }
+    }
+
   render(){
+
+    let toggleFormButton =
+      <ToggleFormButton
+      handleToggle={this.handleToggle}
+      toggle={this.state.toggleClass}
+      />
+
+    let newStudentForm;
+    let toggle = this.state.toggle
+    if (toggle == true){
+      newStudentForm =
+      <NewStudentFormContainer
+      addNewStudent={this.addNewStudent}
+      classroom_id={this.props.match.params.id}
+      />
+    }
+
     let students = this.state.studentsArray.map(student => {
       return(
         <StudentTile
@@ -69,13 +104,14 @@ class IndexPage extends Component{
 
     return(
       <div>
-      <NewStudentFormContainer
-      addNewStudent={this.addNewStudent}
-      classroom_id={this.props.match.params.id}
-      />
-      <h1>Students:</h1>
-      <p><Link to='/schools/:id/classrooms/:id/students/new'>Add a Student</Link></p>
-      {students}
+        {toggleFormButton}
+        {newStudentForm}
+        <h1>Students:</h1>
+        <div className="grid-container">
+          <div className="grid-x">
+            {students}
+          </div>
+        </div>
       </div>
     )
   }

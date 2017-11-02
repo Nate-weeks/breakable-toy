@@ -1,0 +1,43 @@
+li{
+  list-style-type: none;
+  display: inline-block;
+  float: right;
+  font-size: 1.8rem;
+  padding-right: 4rem;
+}
+
+li a{
+  color: black;
+  float: right;
+}
+
+nav{
+  background-color: #7C97CE;
+  height: 3rem;
+}
+
+.new-school{
+  text-align: center;
+}
+
+.create-new-school {
+  margin: 0 auto;
+  padding:0.2rem;
+  text-align: center;
+  font-size: 2.5rem;
+  color: #363636;
+  border: 1px solid black;
+}
+
+.school-list{
+  background-color: #D47E80;
+  border: 1rem solid black;
+}
+
+
+.back-button{
+  float: left;
+  font-size: 1.8rem;
+  color: black;
+  margin-left: 3rem;
+}

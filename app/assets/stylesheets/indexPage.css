@@ -1,0 +1,64 @@
+.toggle-button-false{
+  background-color: #BDEDAF;
+}
+
+.toggle-button-true{
+  background-color:  #85CFB0;
+}
+
+.toggle-button-false:hover{
+  background-color: #BD0711;
+}
+
+.toggle-button-true:hover{
+
+}
+
+.toggle-button-true:focus{
+
+}
+
+div{
+  display: inline-block;
+  width: 100%;
+  background-color: #EEEEEE;
+}
+
+.student-tile{
+  background-color: #89BFC6;
+  padding: 2rem;
+  height: 25rem;
+  border: 1rem solid #EEEEEE;
+  overflow: overlay;
+}
+
+.name{
+  text-align: center;
+  text-decoration: underline;
+}
+
+p{
+  font-size: 1.2rem;
+}
+
+.classroom-info{
+  background-color: #D67E7F;
+  margin-top: 0;
+}
+
+.classroom-name{
+  float: left;
+}
+
+.teachers{
+  text-align: center;
+}
+
+.classroom-description{
+  float: right;
+  display: inline-block;
+}
+
+.teacher-name{
+  text-align: center;
+}

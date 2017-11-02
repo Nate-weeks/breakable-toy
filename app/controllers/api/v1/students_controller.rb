@@ -8,4 +8,28 @@ def index
     students: classroom.students.all
   }
 end
+
+def create
+  classroom = Classroom.find(params["student"]["classroom_id"])
+  student = Student.new
+  student.first_name = params["student"]["first_name"]
+  student.last_name = params["student"]["last_name"]
+  student.address = params["student"]["address"]
+  student.age = params["student"]["age"]
+  student.classroom = classroom
+  student.save
+  student_object = {
+    id: student.id,
+    first_name: student.first_name,
+    last_name: student.last_name,
+    address: student.address,
+    age: student.age,
+    classroom: classroom,
+    created_at: student.created_at,
+    updated_at: student.updated_at
+  }
+
+  render json: student_object
+end
+
 end

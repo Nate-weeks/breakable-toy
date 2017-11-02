@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
-import {link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
+import StudentTile from '../components/StudentTile'
+
 
 class IndexPage extends Component{
   constructor(props){
@@ -10,7 +12,7 @@ class IndexPage extends Component{
   }
 
   componentDidMount() {
-    fetch(`/api/v1/classrooms/${this.props.match.params.id}/students`, {
+    fetch(`/api/v1/classrooms/${this.props.match.params.id}/students.json`, {
       credentials: 'same-origin',
       method: 'GET',
       headers: { 'Content-Type':'application/json'}
@@ -26,16 +28,32 @@ class IndexPage extends Component{
       })
       .then(response => response.json())
       .then(body => {
-        this.setState({studentsArray: body})
-        debugger;
+        this.setState({studentsArray: body.students})
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
     }
 
   render(){
+    let students = this.state.studentsArray.map(student => {
+      return(
+        <StudentTile
+          key = {student.id}
+          id = {student.id}
+          firstName = {student.first_name}
+          lastName = {student.last_name}
+          address = {student.address}
+          age = {student.age}
+          contactNumber = {student.phone_number}
+        />
+      )
+    })
 
     return(
-      <div> hello from index </div>
+      <div>
+      <h1>Students:</h1>
+      <p><Link to='/schools/:id/classrooms/:id/students/new'>Add a Student</Link></p>
+      {students}
+      </div>
     )
   }
 }

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :classrooms do
+      resources :classrooms, only: [:show] do
         resources :students
       end
     end

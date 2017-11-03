@@ -52,7 +52,11 @@ class IndexPage extends Component{
     })
     .then(response => response.json())
     .then(body => {
-      this.setState({ studentsArray: this.state.studentsArray.concat(body) })
+      this.setState({
+        studentsArray: this.state.studentsArray.concat(body),
+        toggle: false,
+        toggleClass: 'toggle-button-false'
+      })
         })
     }
 

@@ -1,9 +1,18 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'schools#index'
-
-  resources :schools do
-    resources :classrooms do
+  authenticate :user do
+    resources :schools do
+        resources :users, only: [:update] do
+        end
+      resources :classrooms do
+        resources :users, only: [:update] do
+          member do
+            patch :update_number_two
+            put :update_number_two
+          end
+        end
+      end
     end
   end
 

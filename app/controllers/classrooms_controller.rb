@@ -3,6 +3,7 @@ class ClassroomsController < ApplicationController
   def show
     @classroom = Classroom.find(params[:id])
     @teachers = @classroom.users
+    @user = current_user
   end
 
   def new

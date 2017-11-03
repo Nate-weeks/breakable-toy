@@ -1,0 +1,24 @@
+<div class="form-container">
+  <h1>Edit School Form</h1>
+  <% if @form_errors %>
+    <% @form_errors.each do |error| %>
+      <p><%= error %></p>
+    <% end %>
+  <% end %>
+
+  <%= form_for @school do |s| %>
+
+    <div class="field">
+      <%= s.label :name %>
+      <%= s.text_field :name %>
+    </div>
+    <div class="field">
+      <%= s.label :description %>
+      <%= s.text_field :description %>
+    </div>
+    <div class="actions">
+      <%= s.button "Edit School" %>
+    </div>
+
+  <% end %>
+</div>

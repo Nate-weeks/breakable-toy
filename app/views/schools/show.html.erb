@@ -7,6 +7,7 @@
   </div>
   <h1 class="school-name"><%= @school.name %></h1>
   <h2 class="school-description"><%= @school.description %><h2>
+  <%= link_to 'Edit School', edit_school_path(@school)%>
   <% @classrooms.each do |classroom|%>
   <h3>Classroom: <%= link_to classroom.name, school_classroom_path(@school, classroom.id) %></h3>
   <% if @user.classroom_id != classroom.id %>

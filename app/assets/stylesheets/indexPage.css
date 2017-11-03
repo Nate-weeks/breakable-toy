@@ -50,6 +50,11 @@ p{
   float: left;
 }
 
+.edit-classroom{
+  margin: 0;
+  line-height: 1;
+}
+
 .teachers{
   text-align: center;
 }
@@ -60,5 +65,7 @@ p{
 }
 
 .teacher-name{
+  float: center;
   text-align: center;
+  width: 50%;
 }

@@ -3,10 +3,11 @@
 <% else %>
   <div class="classroom-info">
     <h1 class="classroom-name"><%= @classroom.name %></h1>
+    <p class="edit-classroom"><%= link_to 'edit classrom information', edit_school_classroom_path(@school, @classroom) %></p>
     <h1 class="classroom-description"><%= @classroom.description %></h2>
     <h2 class="teachers"> teachers: </h3>
     <% @teachers.each do |teacher| %>
-     <p class="teacher-name"><%= teacher.first_name %> <%= teacher.last_name %></p>
+     <p class="teacher-name"><%= teacher.first_name %> <%= teacher.last_name %></span></p>
       <% end %>
   </div>
   <div id=app></div>

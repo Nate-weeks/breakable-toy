@@ -28,6 +28,20 @@ class SchoolsController < ApplicationController
     end
   end
 
+  def edit
+    @school = School.find(params[:id])
+  end
+
+  def update
+    @school = School.find(params[:id])
+    if @school.update(school_params)
+      redirect_to @school
+    else
+      @form_errors = @school.errors.full_messages
+      render :edit
+    end
+  end
+
   private
 
   def school_params

@@ -1,6 +1,7 @@
 class ClassroomsController < ApplicationController
 
   def show
+    @school = School.find(params["school_id"])
     @classroom = Classroom.find(params[:id])
     @teachers = @classroom.users
     @user = current_user
@@ -24,6 +25,22 @@ class ClassroomsController < ApplicationController
     else
       @form_errors = @classroom.errors.full_messages
       render :new
+    end
+  end
+
+  def edit
+    @classroom = Classroom.find(params[:id])
+    @school = School.find(params["school_id"])
+  end
+
+  def update
+    @school = School.find(params["school_id"])
+    @classroom = Classroom.find(params[:id])
+    if @classroom.update(classroom_params)
+      redirect_to school_classroom_path(@school, @classroom)
+    else
+      @form_errors = @classroom.errors.full_messages
+      render :edit
     end
   end
 

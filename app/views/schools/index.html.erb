@@ -5,6 +5,9 @@
 <% @schools.each do |school| %>
   <div class="schools">
   <h1><%= link_to school.name, school_path(school.id) %></h1>
+  <% if @user && @user.school_id != school.id %>
+    <%= button_to 'Join School', school_user_path(school.id, @user.id), method: :patch %>
+  <% end %>
   <h2><%= school.description %></h2>
   <% end %>
   </div>

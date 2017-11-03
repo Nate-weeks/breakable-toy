@@ -16,6 +16,7 @@ def create
   student.last_name = params["student"]["last_name"]
   student.address = params["student"]["address"]
   student.age = params["student"]["age"]
+  student.phone_number = params["student"]["phone_number"]
   student.classroom = classroom
   student.save
   student_object = {
@@ -24,6 +25,7 @@ def create
     last_name: student.last_name,
     address: student.address,
     age: student.age,
+    phone_number: student.phone_number,
     classroom: classroom,
     created_at: student.created_at,
     updated_at: student.updated_at

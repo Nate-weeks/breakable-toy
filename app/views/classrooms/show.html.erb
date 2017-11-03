@@ -1,9 +1,13 @@
-<div class="classroom-info">
-  <h1 class="classroom-name"><%= @classroom.name %></h1>
-  <h1 class="classroom-description"><%= @classroom.description %></h2>
-  <h2 class="teachers"> teachers: </h3>
-  <% @teachers.each do |teacher| %>
-   <p class="teacher-name"><%= teacher.first_name %> <%= teacher.last_name %></p>
-    <% end %>
-</div>
-<div id=app></div>
+<% if @user.classroom_id != @classroom.id %>
+  <h1>you must join this classroom before you can view student information</h1>
+<% else %>
+  <div class="classroom-info">
+    <h1 class="classroom-name"><%= @classroom.name %></h1>
+    <h1 class="classroom-description"><%= @classroom.description %></h2>
+    <h2 class="teachers"> teachers: </h3>
+    <% @teachers.each do |teacher| %>
+     <p class="teacher-name"><%= teacher.first_name %> <%= teacher.last_name %></p>
+      <% end %>
+  </div>
+  <div id=app></div>
+<% end %>

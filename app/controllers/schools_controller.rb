@@ -42,6 +42,12 @@ class SchoolsController < ApplicationController
     end
   end
 
+  def destroy
+    @school = School.find(params[:id])
+    @school.destroy
+    redirect_to root_path
+  end
+  
   private
 
   def school_params

@@ -3,12 +3,20 @@
 <% else %>
   <div class="classroom-info">
     <h1 class="classroom-name"><%= @classroom.name %></h1>
-    <p class="edit-classroom"><%= link_to 'edit classrom information', edit_school_classroom_path(@school, @classroom) %></p>
+
+    <% if @user.id == @classroom.creator_id %>
+      <p class="edit-classroom"><%= link_to 'edit classrom information', edit_school_classroom_path(@school, @classroom) %></p>
+      <p class="delete-classroom"> <%= link_to 'delete classroom', school_classroom_path(@school, @classroom), method: :delete, data: {confirm: 'Are you sure you wanna delete this classroom?' } %></p>
+    <% end %>
     <h1 class="classroom-description"><%= @classroom.description %></h2>
     <h2 class="teachers"> teachers: </h3>
     <% @teachers.each do |teacher| %>
      <p class="teacher-name"><%= teacher.first_name %> <%= teacher.last_name %></span></p>
+     <% if @user.id == @classroom.creator_id %>
+      <%= link_to 'Remove User', destroy_number_two_school_classroom_user_path(@school,@classroom, @user), method: :delete, data: {confirm: 'Are you sure you wanna remove this your user form your school>'} %>
+
       <% end %>
+    <% end %>
   </div>
   <div id=app></div>
 <% end %>

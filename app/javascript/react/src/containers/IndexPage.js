@@ -10,11 +10,12 @@ class IndexPage extends Component{
     super(props)
     this.state = {
       studentsArray: [],
-      toggle: false,
-      toggleClass: 'toggle-button-false'
+      toggleNewStudent: false,
+      toggleNewStudentClass: 'toggle-button-false'
     }
     this.addNewStudent = this.addNewStudent.bind(this)
-    this.handleToggle = this.handleToggle.bind(this)
+    this.handleToggleNewStudent = this.handleToggleNewStudent.bind(this)
+    this.deleteStudent = this.deleteStudent.bind(this)
   }
 
   componentDidMount() {
@@ -54,22 +55,46 @@ class IndexPage extends Component{
     .then(body => {
       this.setState({
         studentsArray: this.state.studentsArray.concat(body),
-        toggle: false,
-        toggleClass: 'toggle-button-false'
+        toggleNewStudent: false,
+        toggleNewStudentClass: 'toggle-button-false'
       })
         })
     }
 
-    handleToggle(){
-      if (this.state.toggle == false) {
+    deleteStudent(student_id){
+      let id = this.props.match.params.id
+      let student = student_id
+      fetch(`/api/v1/classrooms/${id}/students/${student_id}.json`,{
+      credentials: 'same-origin',
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json'}
+    })
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+        error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+      this.setState({ studentsArray: body})
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
+    }
+
+    handleToggleNewStudent(){
+      if (this.state.toggleNewStudent == false) {
         this.setState({
-          toggle: true,
-          toggleClass: 'toggle-button-true'
+          toggleNewStudent: true,
+          toggleNewStudentClass: 'toggle-button-true'
          })
       } else {
         this.setState({
-        toggle: false,
-        toggleClass: 'toggle-button-false'
+        toggleNewStudent: false,
+        toggleNewStudentClass: 'toggle-button-false'
         })
       }
     }
@@ -78,12 +103,12 @@ class IndexPage extends Component{
 
     let toggleFormButton =
       <ToggleFormButton
-      handleToggle={this.handleToggle}
-      toggle={this.state.toggleClass}
+      handleToggle={this.handleToggleNewStudent}
+      toggle={this.state.toggleNewStudentClass}
       />
 
     let newStudentForm;
-    let toggle = this.state.toggle
+    let toggle = this.state.toggleNewStudent
     if (toggle == true){
       newStudentForm =
       <NewStudentFormContainer
@@ -93,6 +118,9 @@ class IndexPage extends Component{
     }
 
     let students = this.state.studentsArray.map(student => {
+      let handleDeleteStudent = () => {
+        this.deleteStudent(student.id)
+      }
       return(
         <StudentTile
           key = {student.id}
@@ -102,6 +130,7 @@ class IndexPage extends Component{
           address = {student.address}
           age = {student.age}
           contactNumber = {student.phone_number}
+          handleClick = {handleDeleteStudent}
         />
       )
     })

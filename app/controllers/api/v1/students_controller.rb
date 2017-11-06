@@ -34,4 +34,17 @@ def create
   render json: student_object
 end
 
+def destroy
+  student_id = params["id"]
+  classroom_id = params["classroom_id"]
+
+
+  student_to_delete = Student.find_by(id: student_id)
+  student_to_delete.delete
+
+  students_to_render = Student.where(classroom_id: classroom_id)
+
+  render json: students_to_render
+end
+
 end

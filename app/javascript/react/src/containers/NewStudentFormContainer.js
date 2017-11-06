@@ -90,19 +90,19 @@ class NewStudentFormContainer extends Component {
       />
     </label>
 
-    <label>Address
-      <textarea
-        name={"address"}
-        value={this.state.address}
+    <label>Age
+      <input
+        name={"age"}
+        value={this.state.age}
         onChange={this.handleChange}
         type="text"
       />
     </label>
 
-    <label>Age
-      <input
-        name={"age"}
-        value={this.state.age}
+    <label>Address
+      <textarea
+        name={"address"}
+        value={this.state.address}
         onChange={this.handleChange}
         type="text"
       />

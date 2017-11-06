@@ -1,22 +1,33 @@
 <% if @user.classroom_id != @classroom.id %>
   <h1>you must join this classroom before you can view student information</h1>
 <% else %>
-  <div class="classroom-info">
-    <h1 class="classroom-name"><%= @classroom.name %></h1>
+  <div class="grid-container student-top-bar">
+    <div class="grid-x classroom-info">
 
-    <% if @user.id == @classroom.creator_id %>
-      <p class="edit-classroom"><%= link_to 'edit classrom information', edit_school_classroom_path(@school, @classroom) %></p>
-      <p class="delete-classroom"> <%= link_to 'delete classroom', school_classroom_path(@school, @classroom), method: :delete, data: {confirm: 'Are you sure you wanna delete this classroom?' } %></p>
-    <% end %>
-    <h1 class="classroom-description"><%= @classroom.description %></h2>
-    <h2 class="teachers"> teachers: </h3>
-    <% @teachers.each do |teacher| %>
-     <p class="teacher-name"><%= teacher.first_name %> <%= teacher.last_name %></span></p>
-     <% if @user.id == @classroom.creator_id %>
-      <%= link_to 'Remove User', destroy_number_two_school_classroom_user_path(@school,@classroom, @user), method: :delete, data: {confirm: 'Are you sure you wanna remove this your user form your school>'} %>
-
+      <div class="small-4 cell classroom-info description"
+      <h1>Classroom Creator: <%= @creator.first_name %> <%= @creator.last_name %></h1>
+      <% if @user.id == @classroom.creator_id %>
+        <p class="edit-classroom"><%= link_to 'edit classrom information', edit_school_classroom_path(@school, @classroom) %></p>
+        <p class="delete-classroom"> <%= link_to 'delete classroom', school_classroom_path(@school, @classroom), method: :delete, data: {confirm: 'Are you sure you wanna delete this classroom?' } %></p>
       <% end %>
-    <% end %>
+      </div>
+
+      <div class="small-4 cell classroom-info">
+      <h1 class="classroom-name"><%= @classroom.name %>:</h1>
+      <h2 class="classroom-description"><%= @classroom.description %></h2>
+
+      </div>
+
+      <div class="small-4 cell classroom-info teachers"
+        <h2 class="Staff"> Staff: </h3>
+        <% @teachers.each do |teacher| %>
+         <p class="teacher-name"><%= teacher.first_name %> <%= teacher.last_name %></span></p>
+         <% if @user.id == @classroom.creator_id %>
+          <a class="remove-user"<%= link_to 'Remove User', destroy_number_two_school_classroom_user_path(@school,@classroom, @user), method: :delete, data: {confirm: 'Are you sure you wanna remove this your user form your school>'} %></a>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
   </div>
-  <div id=app></div>
+<div id=app></div>
 <% end %>

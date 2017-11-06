@@ -34,6 +34,10 @@ def create
   render json: student_object
 end
 
+def update
+
+end
+
 def destroy
   student_id = params["id"]
   classroom_id = params["classroom_id"]

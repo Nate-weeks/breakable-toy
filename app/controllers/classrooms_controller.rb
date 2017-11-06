@@ -5,6 +5,8 @@ class ClassroomsController < ApplicationController
     @classroom = Classroom.find(params[:id])
     @teachers = @classroom.users
     @user = current_user
+    creator_id = @classroom.creator_id
+    @creator = User.find_by(id: creator_id)
   end
 
   def new

@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import StudentTile from '../components/StudentTile'
 import NewStudentFormContainer from './NewStudentFormContainer'
 import ToggleFormButton from '../components/ToggleFormButton'
+import UpdateStudentFormContainer from './UpdateStudentFormContainer'
 
 
 class IndexPage extends Component{
@@ -117,6 +118,11 @@ class IndexPage extends Component{
       />
     }
 
+    let updateStudentForm =
+    <UpdateStudentFormContainer
+    classroom_id={this.props.match.params.id} 
+    />
+
     let students = this.state.studentsArray.map(student => {
       let handleDeleteStudent = () => {
         this.deleteStudent(student.id)
@@ -139,6 +145,7 @@ class IndexPage extends Component{
       <div>
         {toggleFormButton}
         {newStudentForm}
+        {updateStudentForm}
         <h1>Students:</h1>
         <div className="grid-container">
           <div className="grid-x">

@@ -8,6 +8,7 @@ class SchoolsController < ApplicationController
     @school = School.find(params[:id])
     @classrooms = @school.classrooms
     @user = current_user
+    @users_waiting_for_approval = User.where(school: @school, school_approval: false)
   end
 
   def new
@@ -16,10 +17,13 @@ class SchoolsController < ApplicationController
 
   def create
     @school = School.new(school_params)
+    @user = current_user
 
     @school.creator_id = current_user.id
 
     if @school.save
+      @user.update(school_approval: true)
+      @user.update(school_id: @school.id)
       flash[:notice] = 'School created successfully'
       redirect_to root_path
     else
@@ -47,7 +51,7 @@ class SchoolsController < ApplicationController
     @school.destroy
     redirect_to root_path
   end
-  
+
   private
 
   def school_params

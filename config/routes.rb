@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   authenticate :user do
     resources :schools do
         resources :users, only: [:update, :destroy] do
+          member do
+            patch :update_school_approval
+            put :update_school_approval
+          end
         end
       resources :classrooms do
         resources :users, only: [:update] do
@@ -11,6 +15,8 @@ Rails.application.routes.draw do
             patch :update_number_two
             put :update_number_two
             delete :destroy_number_two
+            patch :update_class_approval
+            put :update_class_approval
           end
         end
       end

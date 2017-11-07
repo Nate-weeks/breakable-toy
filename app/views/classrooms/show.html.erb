@@ -1,5 +1,5 @@
-<% if @user.classroom_id != @classroom.id %>
-  <h1>you must join this classroom before you can view student information</h1>
+<% if @user.classroom_id != @classroom.id || @user.classroom_approval != true%>
+  <h1>you must join this classroom and get approval before you can view student information</h1>
 <% else %>
   <div class="grid-container student-top-bar">
     <div class="grid-x classroom-info">
@@ -18,10 +18,17 @@
 
       </div>
 
-      <div class="small-4 cell classroom-info teachers"
-        <h2 class="Staff"> Staff: </h3>
-        <% @teachers.each do |teacher| %>
-         <p class="teacher-name"><%= teacher.first_name %> <%= teacher.last_name %></span></p>
+      <div class="small-4 cell classroom-info teachers">
+        <% if @users_waiting_for_approval != []%>
+        <h2 class="unnaproved-staff"> Unnaproved Staff: </h2>
+          <% @users_waiting_for_approval.each do |user| %>
+            <%= user.first_name %> <%= user.last_name %>
+            <%= button_to 'approve user', update_class_approval_school_classroom_user_path(@school, @classroom, user.id), method: :patch %>
+          <% end %>
+        <% end %>
+        <h2 class="Staff"> Approved Staff: </h2>
+        <% @approved_users.each do |user| %>
+         <p class="teacher-name"><%= user.first_name %> <%= user.last_name %></p>
          <% if @user.id == @classroom.creator_id %>
           <a class="remove-user"<%= link_to 'Remove User', destroy_number_two_school_classroom_user_path(@school,@classroom, @user), method: :delete, data: {confirm: 'Are you sure you wanna remove this your user form your school>'} %></a>
           <% end %>

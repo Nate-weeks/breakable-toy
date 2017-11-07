@@ -6,7 +6,7 @@
   <div class="large-3 cell medium 6-cell small 11-cell cell organizations">
     <h1 class="join-school"><%= link_to school.name, school_path(school.id), class: "join-school" %></h1>
     <% if @user && @user.school_id != school.id %>
-      <a <%= button_to 'Join School', school_user_path(school.id, @user.id), method: :patch %></a>
+      <%= button_to 'Join School', school_user_path(school.id, @user.id), method: :patch %>
     <% end %>
     <h2><%= school.description %></h2>
   </div>

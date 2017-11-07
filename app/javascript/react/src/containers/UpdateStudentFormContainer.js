@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class NewStudentFormContainer extends Component {
+class UpdateStudentFormContainer extends Component {
   constructor(props){
     super(props)
     this.state = {
@@ -15,6 +15,34 @@ class NewStudentFormContainer extends Component {
     this.clearForm = this.clearForm.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
+
+  componentDidMount() {
+    fetch(`/api/v1/classrooms/${this.props.classroom_id}/students/${this.props.student_id}/edit`, {
+      credentials: 'same-origin',
+      method: 'GET',
+      headers: { 'Content-Type':'application/json'}
+    })
+    .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`,
+          error = new Error(errorMessage);
+          throw(error);
+        }
+      })
+      .then(response => response.json())
+      .then(body => {
+        this.setState({
+          firstName: body.first_name,
+          lastName: body.last_name,
+          age: body.age,
+          address: body.address,
+          contactNumber: body.phone_number
+        })
+      })
+      .catch(error => console.error(`Error in fetch: ${error.message}`));
+    }
 
   handleChange(event){
     let value = event.target.value
@@ -45,6 +73,7 @@ class NewStudentFormContainer extends Component {
       this.setState({errors: error_array})
     } else {
       let formPayload = {
+        student_id: this.props.student_id,
         first_name: this.state.firstName,
         last_name: this.state.lastName,
         address: this.state.address,
@@ -52,7 +81,7 @@ class NewStudentFormContainer extends Component {
         phone_number: this.state.contactNumber,
         classroom_id: this.props.classroom_id
       }
-      this.props.addNewStudent(formPayload);
+      this.props.updateStudent(formPayload);
       this.clearForm();
     }
   }
@@ -70,7 +99,7 @@ class NewStudentFormContainer extends Component {
 
     return(
   <form className='student-form'>
-    <h3 className='student-form-header'>New Student</h3>
+    <h3 className='student-form-header'>{this.state.firstName} {this.state.lastName}</h3>
     <ul>{errors}</ul>
     <label>First Name
       <input
@@ -117,10 +146,10 @@ class NewStudentFormContainer extends Component {
       />
     </label>
 
-    <button className="submit-button" type="submit" value="Submit" onClick={this.handleSubmit}>Submit</button>
+    <button className="submit-button" type="submit" value="Submit" onClick={this.handleSubmit}>Update</button>
   </form>
     )
   }
 }
 
-export default NewStudentFormContainer
+export default UpdateStudentFormContainer

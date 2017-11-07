@@ -3,13 +3,14 @@ Rails.application.routes.draw do
   root 'schools#index'
   authenticate :user do
     resources :schools do
-        resources :users, only: [:update] do
+        resources :users, only: [:update, :destroy] do
         end
       resources :classrooms do
         resources :users, only: [:update] do
           member do
             patch :update_number_two
             put :update_number_two
+            delete :destroy_number_two
           end
         end
       end

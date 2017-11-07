@@ -7,7 +7,7 @@ const App = props => {
   return(
     <div>
     <Route exact={true} path="/schools/:id/classrooms/:id" component={IndexPage}/>
-    <Route path="/schools/:id/classrooms/:id/students/new" component={NewStudentFormContainer}/>
+    <Route path="/schools/:id/classrooms/:id/students/:id" component={NewStudentFormContainer}/>
     </div>
   )
 }

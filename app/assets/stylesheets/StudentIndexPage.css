@@ -41,13 +41,48 @@ p{
   font-size: 1.2rem;
 }
 
+div.small-4.cell.classroom-info.teachers{
+  width: 32.333333%;
+}
+
 .classroom-info{
+  background-color: #D67E7F;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.description{
+  font-size: 1.5rem;
+}
+
+.teachers{
+  text-align: center;
+  margin: 0 auto;
+  font-size: 2rem;
+}
+
+a.remove-user{
+  font-size: 1.4rem;
+}
+
+p.teacher-name{
+  font-size:1.3rem;
+  margin: 0;
+}
+
+/*.classroom-info{
   background-color: #D67E7F;
   margin-top: 0;
 }
 
 .classroom-name{
   float: left;
+}
+
+.edit-classroom{
+  margin: 0;
+  line-height: 1;
 }
 
 .teachers{
@@ -60,5 +95,7 @@ p{
 }
 
 .teacher-name{
+  float: center;
   text-align: center;
-}
+  width: 50%;
+}*/

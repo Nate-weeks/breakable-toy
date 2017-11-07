@@ -3,13 +3,13 @@
 <% else %>
 
   <div class="new-classroom">
-    <button class="create-classroom"><%= link_to "Create a new classroom", new_school_classroom_path(params[:id]) %></button>
+    <%= link_to "Create a new classroom", new_school_classroom_path(params[:id]), class: "button large" %>
   </div>
   <% if @users_waiting_for_approval %>
-  <% @users_waiting_for_approval.each do |user| %>
-  <%= user.first_name %> <%= user.last_name %>
-  <%= button_to 'approve user', update_school_approval_school_user_path(@school, user.id), method: :patch %>
-  <% end %>
+    <% @users_waiting_for_approval.each do |user| %>
+      <%= user.first_name %> <%= user.last_name %>
+      <%= button_to 'approve user', update_school_approval_school_user_path(@school, user.id), method: :patch %>
+    <% end %>
   <% end %>
   <h1 class="school-name"><%= @school.name %></h1>
   <h2 class="school-description"><%= @school.description %></h2>

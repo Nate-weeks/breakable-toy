@@ -9,6 +9,7 @@ class SchoolsController < ApplicationController
     @classrooms = @school.classrooms
     @user = current_user
     @users_waiting_for_approval = User.where(school: @school, school_approval: false)
+    @approved_users = User.where(school: @school, school_approval: true)
   end
 
   def new

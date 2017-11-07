@@ -4,7 +4,9 @@ import {Link} from 'react-router-dom';
 const StudentTile = props => {
 
   let deleteButton = <button onClick={props.handleClick}>Delete Student</button>
-  
+
+  let updateButton = <button onClick={props.handleStudentUpdateClick}>Update Student</button>
+
 
   return(
     <div className="small-3 cell student-tile">
@@ -15,6 +17,7 @@ const StudentTile = props => {
       <p>Incident Reports: </p>
       <p>Behavioral Data: </p>
       {deleteButton}
+      {updateButton}
     </div>
   )
 

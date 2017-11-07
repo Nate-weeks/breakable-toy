@@ -17,7 +17,7 @@ class UpdateStudentFormContainer extends Component {
   }
 
   componentDidMount() {
-    fetch(`/api/v1/classrooms/${this.props.classroom_id}/students`, {
+    fetch(`/api/v1/classrooms/${this.props.classroom_id}/students/${this.props.student_id}/edit`, {
       credentials: 'same-origin',
       method: 'GET',
       headers: { 'Content-Type':'application/json'}
@@ -33,7 +33,13 @@ class UpdateStudentFormContainer extends Component {
       })
       .then(response => response.json())
       .then(body => {
-        this.setState({studentsArray: body.students})
+        this.setState({
+          firstName: body.first_name,
+          lastName: body.last_name,
+          age: body.age,
+          address: body.address,
+          contactNumber: body.phone_number
+        })
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
     }
@@ -67,6 +73,7 @@ class UpdateStudentFormContainer extends Component {
       this.setState({errors: error_array})
     } else {
       let formPayload = {
+        student_id: this.props.student_id,
         first_name: this.state.firstName,
         last_name: this.state.lastName,
         address: this.state.address,

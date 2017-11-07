@@ -9,6 +9,8 @@ def index
   }
 end
 
+
+
 def create
   classroom = Classroom.find(params["student"]["classroom_id"])
   student = Student.new
@@ -34,7 +36,34 @@ def create
   render json: student_object
 end
 
+def edit
+  student = Student.find_by(id: params["id"])
+
+  render json: student
+end
+
 def update
+  classroom = Classroom.find(params["student"]["classroom_id"])
+  student = Student.find_by(id: params["id"])
+  student.update(first_name: params["student"]["first_name"])
+  student.update(last_name: params["student"]["last_name"])
+  student.update(address: params["student"]["address"])
+  student.update(age: params["student"]["age"])
+  student.update(phone_number: params["student"]["phone_number"])
+  studentArray = Student.where(classroom_id: classroom.id)
+  updated_student_object = {
+    id: student.id,
+    first_name: student.first_name,
+    last_name: student.last_name,
+    address: student.address,
+    age: student.age,
+    phone_number: student.phone_number,
+    classroom: classroom,
+    created_at: student.created_at,
+    updated_at: student.updated_at
+  }
+
+  render json: studentArray
 
 end
 

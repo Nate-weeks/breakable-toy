@@ -70,6 +70,10 @@ p.teacher-name{
   margin: 0;
 }
 
+.classroom-name{
+  text-align: center;
+}
+
 /*.classroom-info{
   background-color: #D67E7F;
   margin-top: 0;

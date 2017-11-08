@@ -1,5 +1,5 @@
 <div class="form-container">
-  <h1>New School form</h1>
+  <h1>New Facility</h1>
   <% if @form_errors %>
     <% @form_errors.each do |error| %>
       <p><%= error %></p>
@@ -17,7 +17,7 @@
       <%= s.text_field :description %>
     </div>
     <div class="actions">
-      <%= s.button "Create School" %>
+      <%= s.button "Add Facility" %>
     </div>
 
   <% end %>

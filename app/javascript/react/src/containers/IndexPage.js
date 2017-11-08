@@ -192,7 +192,7 @@ class IndexPage extends Component{
         {toggleFormButton}
         {newStudentForm}
         {updateStudentForm}
-        <h1>Students:</h1>
+        <h1>Patients:</h1>
 
         <div className="grid-x">
           {students}

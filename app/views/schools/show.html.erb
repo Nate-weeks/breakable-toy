@@ -4,12 +4,11 @@
 
   <div class="grid-margin-x">
     <div class="small-12 medium-6 large-3 cell school-info">
-      <% if @users_waiting_for_approval %>
-      <% @users_waiting_for_approval.each do |user| %>
       <h3>Unapproved Users:</h3>
+      <% @users_waiting_for_approval.each do |user| %>
+
       <p><%= user.first_name %> <%= user.last_name %></p>
       <%= link_to 'approve user', update_school_approval_school_user_path(@school, user.id), method: :patch, class: "button tiny" %>
-      <% end %>
       <% end %>
     </div>
 
@@ -19,8 +18,8 @@
 
 
       <% if @user.id == @school.creator_id %>
-        <%= link_to 'Edit School', edit_school_path(@school), class: "button tiny"%>
-        <%= link_to 'Delete School', school_path(@school), method: :delete, data: {confirm: 'Are you sure you wanna delete this school?'}, class: "button tiny" %>
+        <%= link_to 'Edit Facility', edit_school_path(@school), class: "button tiny"%>
+        <%= link_to 'Delete Facility', school_path(@school), method: :delete, data: {confirm: 'Are you sure you wanna delete this school?'}, class: "button tiny" %>
     </div>
 
 
@@ -35,7 +34,7 @@
   </div>
 
     <div class="new-classroom">
-      <%= link_to "Create a new classroom", new_school_classroom_path(params[:id]), class: "button large" %>
+      <%= link_to "Add A New Division", new_school_classroom_path(params[:id]), class: "button large" %>
     </div>
 
     <div class="grid-margin-x">

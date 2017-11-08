@@ -1,12 +1,12 @@
 <div class="new-school">
-  <a class="create-new-school"<%= link_to "create new school", new_school_path %></a>
+  <a class="create-new-school"<%= link_to "Add New Facility", new_school_path %></a>
 </div>
 <div class="grid-x grid-margin-x">
   <% @schools.each do |school| %>
   <div class="large-3 cell medium-6 cell small-12 cell organizations">
     <h1 class="join-school"><%= link_to school.name, school_path(school.id), class: "join-school" %></h1>
     <% if @user && @user.school_id != school.id %>
-      <%= link_to 'Join School', school_user_path(school.id, @user.id), method: :patch, class: "button tiny"%>
+      <%= link_to 'Join Facility', school_user_path(school.id, @user.id), method: :patch, class: "button tiny"%>
     <% end %>
     <h2><%= school.description %></h2>
   </div>

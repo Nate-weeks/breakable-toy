@@ -47,9 +47,8 @@ div.small-4.cell.classroom-info.teachers{
 
 .classroom-info{
   background-color: #D67E7F;
-  margin: 0;
-  padding: 0;
-  border: 0;
+  height: 15rem;
+  overflow: auto;
 }
 
 .description{
@@ -69,6 +68,10 @@ a.remove-user{
 p.teacher-name{
   font-size:1.3rem;
   margin: 0;
+}
+
+.classroom-name{
+  text-align: center;
 }
 
 /*.classroom-info{

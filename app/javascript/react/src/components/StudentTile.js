@@ -3,9 +3,9 @@ import {Link} from 'react-router-dom';
 
 const StudentTile = props => {
 
-  let deleteButton = <button onClick={props.handleClick}>Delete Student</button>
+  let deleteButton = <button className="button tiny" onClick={props.handleClick}>Remove Patient</button>
 
-  let updateButton = <button onClick={props.handleStudentUpdateClick}>Update Student</button>
+  let updateButton = <button className="button tiny" onClick={props.handleStudentUpdateClick}>Update Patient</button>
 
 
   return(

@@ -2,32 +2,49 @@
   <h1>you must join this school and be approved before you can view classroom information</h1>
 <% else %>
 
-  <div class="new-classroom">
-    <button class="create-classroom"><%= link_to "Create a new classroom", new_school_classroom_path(params[:id]) %></button>
+  <div class="grid-margin-x">
+    <div class="small-12 medium-6 large-3 cell school-info">
+      <h3>Unapproved Users:</h3>
+      <% @users_waiting_for_approval.each do |user| %>
+
+      <p><%= user.first_name %> <%= user.last_name %></p>
+      <%= link_to 'approve user', update_school_approval_school_user_path(@school, user.id), method: :patch, class: "button tiny" %>
+      <% end %>
+    </div>
+
+    <div class="small-12 medium-6 large-5 cell school-info">
+      <h1 class="school-name"><%= @school.name %></h1>
+      <p class="school-description"><%= @school.description %></p>
+
+
+      <% if @user.id == @school.creator_id %>
+        <%= link_to 'Edit Facility', edit_school_path(@school), class: "button tiny"%>
+        <%= link_to 'Delete Facility', school_path(@school), method: :delete, data: {confirm: 'Are you sure you wanna delete this school?'}, class: "button tiny" %>
+    </div>
+
+
+    <div class="small-12 medium-6 large-3 cell school-info">
+      <h3>Approved Users:</h3>
+      <% @approved_users.each do |user| %>
+        <p><%= user.first_name %> <%= user.last_name %></p>
+        <%= link_to 'Remove User', school_user_path(@school, user), method: :delete, data: {confirm: 'Are you sure you wanna remove this user from your school>'}, class: "button tiny"%>
+        <% end %>
+      <% end %>
+    </div>
   </div>
-  <% if @users_waiting_for_approval %>
-  <% @users_waiting_for_approval.each do |user| %>
-  <%= user.first_name %> <%= user.last_name %>
-  <%= button_to 'approve user', update_school_approval_school_user_path(@school, user.id), method: :patch %>
-  <% end %>
-  <% end %>
-  <h1 class="school-name"><%= @school.name %></h1>
-  <h2 class="school-description"><%= @school.description %></h2>
 
-  <% if @user.id == @school.creator_id %>
-      <%= link_to 'Edit School', edit_school_path(@school)%>
-      <%= link_to 'Delete School', school_path(@school), method: :delete, data: {confirm: 'Are you sure you wanna delete this school?'} %>
-      <% @school.users.each do |user| %>
-        <p><%= user.first_name %> <%= user.last_name %> <%= link_to 'Remove User', school_user_path(@school, user), method: :delete, data: {confirm: 'Are you sure you wanna remove this user from your school>'} %></p>
-          <% end %>
-    <% end %>
+    <div class="new-classroom">
+      <%= link_to "Add A New Division", new_school_classroom_path(params[:id]), class: "button large" %>
+    </div>
 
-    <div class="grid-x">
+    <div class="grid-margin-x">
     <% @classrooms.each do |classroom|%>
-      <div class="small-3 cell">
-        <h3>Classroom: <%= link_to classroom.name, school_classroom_path(@school, classroom.id) %></h3>
+      <div class="small-3 cell classroom">
+        <%= link_to classroom.name, school_classroom_path(@school, classroom.id), class: "classroom-title" %></br>
         <% if @user.classroom_id != classroom.id %>
-          <%= button_to 'Join Classroom', update_number_two_school_classroom_user_path(@school, classroom, @user), method: :patch %>
+          <%= link_to 'Join Classroom', update_number_two_school_classroom_user_path(@school, classroom, @user), method: :patch, class: "button tiny" %>
+          <% else %>
+          <p class="member-message">you are a member</p>
         <% end %>
         <h4>Description: <%= classroom.description %></h4>
       </div>

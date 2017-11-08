@@ -23,13 +23,15 @@ li a{
 a.back-button{
   margin-top: -.8rem;
 }
+
 .menu{
   background-color: #7C97CE;
   height: 4rem;
 }
 
 div.new-school{
-  padding-top: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   text-align: center;
   background-color: #89BFC6;
 }
@@ -45,10 +47,11 @@ div.grid-margin-x{
   border: 1px solid black;
   background-color: #85CFB0;
   border-radius: 10rem;
+
 }
 
 a.create-new-school {
-  margin-top: 1rem;
+margin-top: -1rem;
 }
 
 .school-list{

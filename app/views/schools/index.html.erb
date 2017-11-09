@@ -5,10 +5,10 @@
   <% @schools.each do |school| %>
   <div class="large-3 cell medium-6 cell small-12 cell organizations">
     <h1 class="join-school"><%= link_to school.name, school_path(school.id), class: "join-school" %></h1>
-    <% if @user && @user.school_id != school.id %>
+    <% if @user && @user.school_id != school.id && @user.id != school.creator_id %>
       <%= link_to 'Join Facility', school_user_path(school.id, @user.id), method: :patch, class: "button tiny"%>
     <% end %>
-    <h2><%= school.description %></h2>
+    <p class="school-description"><%= school.description %></p>
   </div>
     <% end %>
 

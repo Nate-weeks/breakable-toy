@@ -1,6 +1,4 @@
-<% if @user.school_id != @school.id || @user.school_approval != true %>
-  <h1>you must join this school and be approved before you can view classroom information</h1>
-<% else %>
+<% if @user.school_id == @school.id && @user.school_approval == true || @user.id == @school.creator_id %>
 
   <div class="grid-margin-x">
     <div class="small-12 medium-6 large-3 cell school-info">
@@ -20,14 +18,17 @@
       <% if @user.id == @school.creator_id %>
         <%= link_to 'Edit Facility', edit_school_path(@school), class: "button tiny"%>
         <%= link_to 'Delete Facility', school_path(@school), method: :delete, data: {confirm: 'Are you sure you wanna delete this school?'}, class: "button tiny" %>
+      <% end %>
     </div>
+
 
 
     <div class="small-12 medium-6 large-3 cell school-info">
       <h3>Approved Users:</h3>
       <% @approved_users.each do |user| %>
         <p><%= user.first_name %> <%= user.last_name %></p>
-        <%= link_to 'Remove User', school_user_path(@school, user), method: :delete, data: {confirm: 'Are you sure you wanna remove this user from your school>'}, class: "button tiny"%>
+        <% if @user.id == @school.creator_id %>
+          <%= link_to 'Remove User', school_user_path(@school, user), method: :delete, data: {confirm: 'Are you sure you wanna remove this user from your school>'}, class: "button tiny"%>
         <% end %>
       <% end %>
     </div>
@@ -41,7 +42,7 @@
     <% @classrooms.each do |classroom|%>
       <div class="small-3 cell classroom">
         <%= link_to classroom.name, school_classroom_path(@school, classroom.id), class: "classroom-title" %></br>
-        <% if @user.classroom_id != classroom.id %>
+        <% if @user.classroom_id != classroom.id && @user.id != classroom.creator_id %>
           <%= link_to 'Join Classroom', update_number_two_school_classroom_user_path(@school, classroom, @user), method: :patch, class: "button tiny" %>
           <% else %>
           <p class="member-message">you are a member</p>
@@ -50,5 +51,7 @@
       </div>
         <% end %>
 
-      <% end %>
     </div>
+  <% else %>
+  <h1>you must join this school and be approved before you can view classroom information</h1>
+  <% end %>

@@ -74,6 +74,10 @@ p.teacher-name{
   text-align: center;
 }
 
+.classroom-description{
+  font-size: 1.4rem;
+}
+
 /*.classroom-info{
   background-color: #D67E7F;
   margin-top: 0;

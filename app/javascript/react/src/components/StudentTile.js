@@ -10,12 +10,11 @@ const StudentTile = props => {
 
   return(
     <div className="small-3 cell student-tile">
+      <img className="student-photo" src={props.picture} alt={`photo of ${props.username}`}/>
       <h2 className="name">{props.firstName} {props.lastName}</h2>
       <p>Age: {props.age}</p>
       <p>Address: {props.address}</p>
       <p>Contact Number: {props.contactNumber}</p>
-      <p>Incident Reports: </p>
-      <p>Behavioral Data: </p>
       {deleteButton}
       {updateButton}
     </div>

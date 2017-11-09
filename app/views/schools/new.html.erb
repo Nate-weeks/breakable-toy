@@ -12,10 +12,18 @@
       <%= s.label :name %>
       <%= s.text_field :name %>
     </div>
+
     <div class="field">
       <%= s.label :description %>
       <%= s.text_field :description %>
     </div>
+
+    <div class="field">
+      <%= s.label :avatar, "Facility Picture" %>
+      <%= s.file_field :avatar %>
+      <%= s.hidden_field :avatar_cache %>
+    </div>
+
     <div class="actions">
       <%= s.button "Add Facility" %>
     </div>

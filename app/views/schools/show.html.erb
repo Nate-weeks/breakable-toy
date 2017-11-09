@@ -13,6 +13,7 @@
     <div class="small-12 medium-6 large-5 cell school-info">
       <h1 class="school-name"><%= @school.name %></h1>
       <p class="school-description"><%= @school.description %></p>
+      <img src=<%=@school.avatar %> />
 
 
       <% if @user.id == @school.creator_id %>

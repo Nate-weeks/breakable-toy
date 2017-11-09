@@ -6,34 +6,10 @@ div{
   display: inline-block;
 }
 
-li{
-  list-style-type: none;
-  display: inline-block;
-  float: right;
-  font-size: 1.8rem;
-  padding-right: 4rem;
-}
-
-li a{
-  color: black;
-  float: right;
-  margin-top: -.8rem;
-}
-
-a.back-button{
-  margin-top: -.8rem;
-}
-
-.menu{
-  background-color: #7C97CE;
-  height: 4rem;
-}
-
 div.new-school{
   padding-top: 1rem;
   padding-bottom: 1rem;
   text-align: center;
-  background-color: #89BFC6;
 }
 
 div.grid-margin-x{
@@ -52,6 +28,7 @@ div.grid-margin-x{
 
 a.create-new-school {
 margin-top: -1rem;
+padding: 0.85rem;
 }
 
 

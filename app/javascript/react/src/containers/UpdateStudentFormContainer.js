@@ -9,7 +9,8 @@ class UpdateStudentFormContainer extends Component {
       address: '',
       age: '',
       contactNumber: '',
-      errors: []
+      errors: [],
+      profilePhoto: []
     }
     this.handleChange = this.handleChange.bind(this)
     this.clearForm = this.clearForm.bind(this)
@@ -20,7 +21,7 @@ class UpdateStudentFormContainer extends Component {
     fetch(`/api/v1/classrooms/${this.props.classroom_id}/students/${this.props.student_id}/edit`, {
       credentials: 'same-origin',
       method: 'GET',
-      headers: { 'Content-Type':'application/json'}
+      headers: {}
     })
     .then(response => {
         if (response.ok) {
@@ -38,7 +39,8 @@ class UpdateStudentFormContainer extends Component {
           lastName: body.last_name,
           age: body.age,
           address: body.address,
-          contactNumber: body.phone_number
+          contactNumber: body.phone_number,
+          profilePhoto: body.avatar
         })
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
@@ -48,6 +50,12 @@ class UpdateStudentFormContainer extends Component {
     let value = event.target.value
     let name = event.target.name
     this.setState({ [name]: value})
+  }
+
+  handleImageChange(files){
+    this.setState({
+      profilePhoto: files[0]
+    })
   }
 
   clearForm(){
@@ -81,12 +89,16 @@ class UpdateStudentFormContainer extends Component {
         phone_number: this.state.contactNumber,
         classroom_id: this.props.classroom_id
       }
-      this.props.updateStudent(formPayload);
+      let formData = new FormData()
+      formData.append('kidPhoto', this.state.profilePhoto)
+      formData.append('formPayload', JSON.stringify(formPayload))
+      this.props.updateStudent(formData);
       this.clearForm();
     }
   }
 
   render(){
+    console.log(this.state.profilePhoto)
     let errors = this.state.errors
     let error_messages = []
     if(errors.length > 0){
@@ -143,6 +155,13 @@ class UpdateStudentFormContainer extends Component {
         value={this.state.contactNumber}
         onChange={this.handleChange}
         type="text"
+      />
+    </label>
+
+    <label>Client Picture
+      <input
+        type="file"
+        onChange={(e) => this.handleImageChange(e.target.files)}
       />
     </label>
 

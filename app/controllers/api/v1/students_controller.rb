@@ -12,14 +12,16 @@ end
 
 
 def create
-  classroom = Classroom.find(params["student"]["classroom_id"])
+  parsedFormPayload = JSON.parse(params['formPayload'])
+  classroom = Classroom.find(parsedFormPayload["classroom_id"])
   student = Student.new
-  student.first_name = params["student"]["first_name"]
-  student.last_name = params["student"]["last_name"]
-  student.address = params["student"]["address"]
-  student.age = params["student"]["age"]
-  student.phone_number = params["student"]["phone_number"]
+  student.first_name = parsedFormPayload["first_name"]
+  student.last_name = parsedFormPayload["last_name"]
+  student.address = parsedFormPayload["address"]
+  student.age = parsedFormPayload["age"]
+  student.phone_number = parsedFormPayload["phone_number"]
   student.classroom = classroom
+  student.avatar = params["kidPhoto"]
   student.save
   student_object = {
     id: student.id,
@@ -30,7 +32,8 @@ def create
     phone_number: student.phone_number,
     classroom: classroom,
     created_at: student.created_at,
-    updated_at: student.updated_at
+    updated_at: student.updated_at,
+    avatar: student.avatar
   }
 
   render json: student_object
@@ -43,13 +46,16 @@ def edit
 end
 
 def update
-  classroom = Classroom.find(params["student"]["classroom_id"])
-  student = Student.find_by(id: params["id"])
-  student.update(first_name: params["student"]["first_name"])
-  student.update(last_name: params["student"]["last_name"])
-  student.update(address: params["student"]["address"])
-  student.update(age: params["student"]["age"])
-  student.update(phone_number: params["student"]["phone_number"])
+  binding.pry
+  parsedFormPayload = JSON.parse(params['formPayload'])
+  classroom = Classroom.find(parsedFormPayload["classroom_id"])
+  student = Student.find_by(id: parsedFormPayload["student_id"])
+  student.update(first_name: parsedFormPayload["first_name"])
+  student.update(last_name: parsedFormPayload["last_name"])
+  student.update(address: parsedFormPayload["address"])
+  student.update(age: parsedFormPayload["age"])
+  student.update(phone_number: parsedFormPayload["phone_number"])
+  student.update(avatar: params["kidPhoto"])
   studentArray = Student.where(classroom_id: classroom.id)
   updated_student_object = {
     id: student.id,

@@ -1,0 +1,21 @@
+li{
+  list-style-type: none;
+  display: inline-block;
+  float: right;
+  font-size: 1.8rem;
+  padding-right: 4rem;
+}
+
+li a{
+  color: black;
+  float: right;
+  margin-top: -.8rem;
+}
+
+a.back-button{
+  margin-top: -.8rem;
+}
+
+.menu{
+  background-color: #89BFC6;
+}

@@ -44,21 +44,17 @@ class IndexPage extends Component{
       .catch(error => console.error(`Error in fetch: ${error.message}`));
     }
 
-    updateStudent(formPayload){
+    updateStudent(formData){
       let classroom_id = this.props.match.params.id
-      let student_id = formPayload.student_id
+      let student_id = formData.student_id
       fetch(`/api/v1/classrooms/${classroom_id}/students/${student_id}`,{
         credentials: 'same-origin',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
+        headers: {},
         method: 'PATCH',
-        body: JSON.stringify({ student: formPayload })
+        body: formData
       })
       .then(response => response.json())
       .then(body => {
-        console.log(body)
         this.setState({
           studentsArray: body,
           studentBeingEdited: ""
@@ -66,16 +62,13 @@ class IndexPage extends Component{
       })
     }
 
-    addNewStudent(formPayload){
+    addNewStudent(formData){
       let id = this.props.match.params.id
       fetch(`/api/v1/classrooms/${id}/students`,{
         credentials: 'same-origin',
-        headers: {
-          'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
+        headers: {},
       method: 'POST',
-      body: JSON.stringify({ student: formPayload })
+      body: formData
     })
     .then(response => response.json())
     .then(body => {
@@ -83,8 +76,8 @@ class IndexPage extends Component{
         studentsArray: this.state.studentsArray.concat(body),
         toggleNewStudent: false,
         toggleNewStudentClass: 'toggle-button-false',
-      })
         })
+      })
     }
 
     deleteStudent(student_id){
@@ -181,6 +174,7 @@ class IndexPage extends Component{
           address = {student.address}
           age = {student.age}
           contactNumber = {student.phone_number}
+          picture = {student.avatar.url}
           handleClick = {handleDeleteStudent}
           handleStudentUpdateClick = {handleStudentEditSelect}
         />

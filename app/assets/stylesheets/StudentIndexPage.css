@@ -103,6 +103,11 @@ p.teacher-name{
   font-size: 1.4rem;
 }
 
+textarea{
+  max-width: 100%;
+}
+
+
 /*.classroom-info{
   background-color: #D67E7F;
   margin-top: 0;

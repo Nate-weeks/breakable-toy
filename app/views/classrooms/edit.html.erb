@@ -1,27 +1,29 @@
 
-<div class="form-container">
-  <h1>Edit Division</h1>
+<div class="grid-x">
+  <div class="large-4 large-offset-4 cell">
+    <h1 class="edit-division">Edit Division</h1>
 
 
-  <%= form_for [@school, @classroom] do |c| %>
+    <%= form_for [@school, @classroom] do |c| %>
 
-    <div class="field">
-      <%= c.label :name %>
-      <%= c.text_field :name %>
-    </div>
-    <div class="field">
-      <%= c.label :description %>
-      <%= c.text_field :description %>
-    </div>
-    <div class="actions">
-      <%= c.button "Edit Classroom" %>
-    </div>
+      <div class="field">
+        <%= c.label :name %>
+        <%= c.text_field :name %>
+      </div>
+      <div class="field">
+        <%= c.label :description %>
+        <%= c.text_area :description %>
+      </div>
+      <div class="actions">
+        <%= c.button "Edit Division" %>
+      </div>
 
-  <% end %>
-
-  <% if @form_errors %>
-    <% @form_errors.each do |error| %>
-      <p><%= error %></p>
     <% end %>
-  <% end %>
+
+    <% if @form_errors %>
+      <% @form_errors.each do |error| %>
+        <p><%= error %></p>
+      <% end %>
+    <% end %>
+  </div>
 </div>

@@ -3,6 +3,9 @@
   <div class="grid-margin-x">
     <div class="small-12 medium-6 large-3 cell school-info users">
       <h3> Creator: </h3>
+      <div class="image-cropper">
+        <img class="creator-image"src=<%= @creator.avatar %>/>
+      </div>
       <p class="creator"><%= @creator.first_name %>  <%= @creator.last_name %></p>
       <% if @user.id == @school.creator_id %>
         <%= link_to 'Edit Facility', edit_school_path(@school), class: "button tiny"%>
@@ -19,9 +22,12 @@
 
 
     <div class="small-12 medium-6 large-3 cell school-info users">
-      <h3>Approved Users:</h3>
+      <h2>Approved Users:</h2>
       <% @approved_users.each do |user| %>
-        <p><%= user.first_name %> <%= user.last_name %></p>
+        <div class="image-cropper">
+          <img class="creator-image"src= <%= user.avatar %>/>
+        </div>
+        <p class="approved-users"><%= user.first_name %> <%= user.last_name %></p>
         <% if @user.id == @school.creator_id %>
           <%= link_to 'Remove User', school_user_path(@school, user), method: :delete, data: {confirm: 'Are you sure you wanna remove this user from your school>'}, class: "button tiny"%>
         <% end %>

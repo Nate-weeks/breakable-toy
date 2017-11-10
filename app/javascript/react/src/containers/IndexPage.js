@@ -12,7 +12,7 @@ class IndexPage extends Component{
     this.state = {
       studentsArray: [],
       toggleNewStudent: false,
-      toggleNewStudentClass: 'toggle-button-false',
+      toggleNewStudentClass: 'hollow button',
       studentBeingEdited: ""
     }
     this.addNewStudent = this.addNewStudent.bind(this)
@@ -75,7 +75,7 @@ class IndexPage extends Component{
       this.setState({
         studentsArray: this.state.studentsArray.concat(body),
         toggleNewStudent: false,
-        toggleNewStudentClass: 'toggle-button-false',
+        toggleNewStudentClass: 'hollow button',
         })
       })
     }
@@ -108,12 +108,12 @@ class IndexPage extends Component{
       if (this.state.toggleNewStudent == false) {
         this.setState({
           toggleNewStudent: true,
-          toggleNewStudentClass: 'toggle-button-true'
+          toggleNewStudentClass: 'button success'
          })
       } else {
         this.setState({
         toggleNewStudent: false,
-        toggleNewStudentClass: 'toggle-button-false'
+        toggleNewStudentClass: 'hollow button'
         })
       }
     }
@@ -122,7 +122,7 @@ class IndexPage extends Component{
       this.setState ({
         studentBeingEdited: student_id,
         toggleNewStudent: false,
-        toggleNewStudentClass: 'toggle-button-false'
+        toggleNewStudentClass: 'hollow button'
       })
       console.log(this.state.studentBeingEdited)
     }

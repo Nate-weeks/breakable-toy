@@ -6,16 +6,31 @@ li{
   padding-right: 4rem;
 }
 
+li.registration{
+  padding-right: 0;
+}
+
 li a{
   color: black;
   float: right;
-  margin-top: -.8rem;
-}
-
-a.back-button{
-  margin-top: -.8rem;
 }
 
 .menu{
   background-color: #89BFC6;
+}
+
+.top-bar{
+  height: 3.8rem;
+  overflow: auto;
+  background-color: #89BFC6;
+  margin-left: 2.5rem;
+  margin-top: 1rem;
+}
+
+a.admistus{
+  font-size: 3rem;
+  margin-bottom: 0;
+  color: black;
+  font-family: 'Jura', sans-serif;
+  font-weight: bold;
 }

@@ -2,7 +2,7 @@
   <div class="grid-container student-top-bar">
     <div class="grid-margin-x classroom-info">
 
-      <div class="small-3 cell classroom-info description">
+      <div class="small-12 medium-6 large-3 cell classroom-info description">
       <h3>Division Creator:</h3>
       <p class="creator-name"><%= @creator.first_name %> <%= @creator.last_name %></p>
       <% if @user.id == @classroom.creator_id %>
@@ -11,13 +11,13 @@
       <% end %>
       </div>
 
-      <div class="small-5 cell classroom-info">
+      <div class="small-12 medium-9 large-5 cell classroom-info">
       <h1 class="classroom-name"><%= @classroom.name %></h1>
       <p class="classroom-description"><%= @classroom.description %></p>
 
       </div>
 
-      <div class="small-3 cell classroom-info teachers">
+      <div class="small-12 medium-6 large-3 cell classroom-info teachers">
         <% if @users_waiting_for_approval != [] %>
         <h3 class="unnaproved-staff"> Unnaproved Staff: </h3>
           <% @users_waiting_for_approval.each do |user| %>

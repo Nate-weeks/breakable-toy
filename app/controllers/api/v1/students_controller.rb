@@ -49,24 +49,9 @@ def update
   parsedFormPayload = JSON.parse(params['formPayload'])
   classroom = Classroom.find(parsedFormPayload["classroom_id"])
   student = Student.find_by(id: parsedFormPayload["student_id"])
-  student.update(first_name: parsedFormPayload["first_name"])
-  student.update(last_name: parsedFormPayload["last_name"])
-  student.update(address: parsedFormPayload["address"])
-  student.update(age: parsedFormPayload["age"])
-  student.update(phone_number: parsedFormPayload["phone_number"])
-  student.update(avatar: params["kidPhoto"])
+  student.update(first_name: parsedFormPayload["first_name"], last_name: parsedFormPayload["last_name"], address: parsedFormPayload["address"], age: parsedFormPayload["age"], phone_number: parsedFormPayload["phone_number"], avatar: params["kidPhoto"])
+
   studentArray = Student.where(classroom_id: classroom.id)
-  updated_student_object = {
-    id: student.id,
-    first_name: student.first_name,
-    last_name: student.last_name,
-    address: student.address,
-    age: student.age,
-    phone_number: student.phone_number,
-    classroom: classroom,
-    created_at: student.created_at,
-    updated_at: student.updated_at
-  }
 
   render json: studentArray
 

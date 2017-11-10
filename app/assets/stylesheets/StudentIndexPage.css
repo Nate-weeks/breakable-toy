@@ -59,7 +59,8 @@ p{
 
 .name{
   text-align: center;
-  text-decoration: underline;
+  font-family: 'Jura', sans-serif;
+  font-weight: bold;
 }
 
 p{
@@ -97,6 +98,11 @@ p.teacher-name{
 
 .classroom-name{
   text-align: center;
+}
+
+.classroom-title{
+  font-family: 'Jura', sans-serif;
+  font-weight: bold;
 }
 
 .classroom-description{

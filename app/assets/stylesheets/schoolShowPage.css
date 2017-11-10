@@ -46,6 +46,7 @@ p.approved-users{
   background-color: #D67E7F;
   height: 23rem;
   margin: 3rem;
+  padding: .5rem;
   overflow: auto;
 }
 

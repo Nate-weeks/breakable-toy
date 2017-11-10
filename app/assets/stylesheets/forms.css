@@ -1,0 +1,19 @@
+.form-container{
+  width: 50%;
+  margin: 0 auto;
+}
+
+.form-super-container{
+}
+
+form.new_user{
+  margin: 0 auto;
+}
+
+.actions{
+  margin-left: 14.3rem;
+}
+
+label{
+  font-size: 2rem;
+}

@@ -80,7 +80,6 @@ class NewStudentFormContainer extends Component {
 
     return(
   <form className='student-form'>
-    <h3 className='student-form-header'>New Patient</h3>
     <ul>{errors}</ul>
     <label>First Name
       <input

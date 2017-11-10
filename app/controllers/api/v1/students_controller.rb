@@ -46,7 +46,6 @@ def edit
 end
 
 def update
-  binding.pry
   parsedFormPayload = JSON.parse(params['formPayload'])
   classroom = Classroom.find(parsedFormPayload["classroom_id"])
   student = Student.find_by(id: parsedFormPayload["student_id"])

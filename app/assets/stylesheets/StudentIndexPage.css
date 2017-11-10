@@ -18,6 +18,18 @@
 
 }
 
+.creator-name{
+  font-size: 2.3rem;
+}
+
+div.button-contaier{
+  text-align: center;
+}
+
+div#app{
+  text-align: center;
+}
+
 div{
   display: inline-block;
   width: 100%;
@@ -27,9 +39,22 @@ div{
 .student-tile{
   background-color: #89BFC6;
   padding: 2rem;
-  height: 25rem;
+  height: 40rem;
   border: 1rem solid #EEEEEE;
   overflow: overlay;
+}
+
+.student-photo{
+  height: 20rem;
+  border-radius: 50%;
+}
+
+p{
+  font-size: 2rem;
+}
+
+.button.tiny{
+  margin: 0 1rem;
 }
 
 .name{

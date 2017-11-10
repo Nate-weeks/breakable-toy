@@ -1,5 +1,4 @@
 .new-classroom{
-  background-color: #84CFAF;
   height: 4rem;
   text-align: center;
 }
@@ -19,9 +18,13 @@ p.school-description{
   text-align: center;
 }
 
+p.creator{
+  font-size: 2rem;
+}
+
 .classroom{
   background-color: #D67E7F;
-  height: 15rem;
+  height: 23rem;
   margin: 3rem;
   overflow: auto;
 }
@@ -36,6 +39,12 @@ a.classroom-title:hover{
 }
 
 div.school-info{
-  height: 15rem;
+  height: 32rem;
   overflow: auto;
+}
+
+.school-image{
+  height: 25rem;
+  width: 50rem;
+  margin-bottom: 1rem;
 }

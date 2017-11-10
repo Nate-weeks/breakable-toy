@@ -182,7 +182,7 @@ class IndexPage extends Component{
     })
 
     return(
-      <div>
+      <div className="button-container">
         {toggleFormButton}
         {newStudentForm}
         {updateStudentForm}

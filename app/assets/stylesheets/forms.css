@@ -1,0 +1,39 @@
+.form-container{
+  width: 50%;
+  margin: 0 auto;
+}
+
+.form-super-container{
+}
+
+form.new_user{
+  margin: 0 auto;
+}
+
+.actions{
+  margin-left: 14.3rem;
+}
+
+label{
+  font-size: 2rem;
+}
+
+.edit-name{
+  text-align: center;
+}
+
+.new-facility{
+  text-align: center;
+}
+
+.edit-school{
+  text-align: center;
+}
+
+.new-division{
+  text-align: center;
+}
+
+.edit-division{
+  text-align: center;
+}

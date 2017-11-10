@@ -2,29 +2,30 @@
   <div class="grid-container student-top-bar">
     <div class="grid-margin-x classroom-info">
 
-      <div class="small-3 cell classroom-info description"
-      <h1>Division Creator: <%= @creator.first_name %> <%= @creator.last_name %></h1><br>
+      <div class="small-12 medium-6 large-3 cell classroom-info description">
+      <h3>Division Creator:</h3>
+      <p class="creator-name"><%= @creator.first_name %> <%= @creator.last_name %></p>
       <% if @user.id == @classroom.creator_id %>
-        <%= link_to 'Edit Division', edit_school_classroom_path(@school, @classroom), class: "button tiny" %><br>
+        <%= link_to 'Edit Division', edit_school_classroom_path(@school, @classroom), class: "button tiny" %>
         <%= link_to 'Remove Division', school_classroom_path(@school, @classroom), method: :delete, data: {confirm: 'Are you sure you wanna delete this classroom?' }, class: "button tiny" %><br>
       <% end %>
       </div>
 
-      <div class="small-5 cell classroom-info">
+      <div class="small-12 medium-9 large-5 cell classroom-info">
       <h1 class="classroom-name"><%= @classroom.name %></h1>
       <p class="classroom-description"><%= @classroom.description %></p>
 
       </div>
 
-      <div class="small-3 cell classroom-info teachers">
+      <div class="small-12 medium-6 large-3 cell classroom-info teachers">
         <% if @users_waiting_for_approval != [] %>
-        <h2 class="unnaproved-staff"> Unnaproved Staff: </h2>
+        <h3 class="unnaproved-staff"> Unnaproved Staff: </h3>
           <% @users_waiting_for_approval.each do |user| %>
             <p class="teacher-name"><%= user.first_name %> <%= user.last_name %></p>
             <%= link_to 'Approve User', update_class_approval_school_classroom_user_path(@school, @classroom, user.id), method: :patch, class: "button tiny" %>
           <% end %>
         <% end %>
-        <h2 class="Staff"> Approved Staff: </h2>
+        <h3 class="Staff"> Approved Staff: </h3>
         <% @approved_users.each do |user| %>
          <p class="teacher-name"><%= user.first_name %> <%= user.last_name %></p>
          <% if @user.id == @classroom.creator_id %>

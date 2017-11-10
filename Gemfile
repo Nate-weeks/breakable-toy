@@ -8,6 +8,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'webpacker'
 gem 'devise'
 gem 'foundation-rails'
+gem 'carrierwave', '~> 1.0'
 group :development do
   gem 'listen', '~> 3.0.5'
   gem 'spring'

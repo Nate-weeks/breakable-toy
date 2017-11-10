@@ -4,11 +4,12 @@
   margin: 0 auto;
   background-color: #7C97CE;
   color: black;
+  padding: 1rem;
 }
 
 label{
   color: black;
-  font-size: 1.2rem;
+  font-size: 2.1rem;
 }
 
 .submit-button{
@@ -20,18 +21,10 @@ label{
 }
 
 button{
-  font-size: 1.2rem;
-}
-
-button:hover{
-  color: black;
-  background-color: #BDEDAF;
-}
-
-button:focus{
-  color: black;
+  font-size: 1.4rem;
 }
 
 .student-form-header{
   text-align: center;
+  font-size: 3rem;
 }

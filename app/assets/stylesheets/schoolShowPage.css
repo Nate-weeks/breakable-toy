@@ -1,5 +1,20 @@
+.creator-image{
+  display: inline;
+  margin: 0 auto;
+  height: 100%;
+  min-width: auto;
+}
+
+.image-cropper {
+    width: 10rem;
+    height: 10rem;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    background-color: #C0C0C2;
+}
+
 .new-classroom{
-  background-color: #84CFAF;
   height: 4rem;
   text-align: center;
 }
@@ -19,10 +34,19 @@ p.school-description{
   text-align: center;
 }
 
+p.creator{
+  font-size: 2rem;
+}
+
+p.approved-users{
+  font-size: 1.7rem;
+}
+
 .classroom{
   background-color: #D67E7F;
-  height: 15rem;
+  height: 23rem;
   margin: 3rem;
+  padding: .5rem;
   overflow: auto;
 }
 
@@ -36,6 +60,12 @@ a.classroom-title:hover{
 }
 
 div.school-info{
-  height: 15rem;
+  height: 32rem;
   overflow: auto;
+}
+
+.school-image{
+  height: 25rem;
+  width: 50rem;
+  margin-bottom: 1rem;
 }

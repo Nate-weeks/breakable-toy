@@ -9,7 +9,8 @@ class NewStudentFormContainer extends Component {
       address: '',
       age: '',
       contactNumber: '',
-      errors: []
+      errors: [],
+      profilePhoto: []
     }
     this.handleChange = this.handleChange.bind(this)
     this.clearForm = this.clearForm.bind(this)
@@ -20,6 +21,12 @@ class NewStudentFormContainer extends Component {
     let value = event.target.value
     let name = event.target.name
     this.setState({ [name]: value})
+  }
+
+  handleImageChange(files){
+    this.setState({
+      profilePhoto: files[0]
+    })
   }
 
   clearForm(){
@@ -52,7 +59,10 @@ class NewStudentFormContainer extends Component {
         phone_number: this.state.contactNumber,
         classroom_id: this.props.classroom_id
       }
-      this.props.addNewStudent(formPayload);
+      let formData = new FormData()
+      formData.append('kidPhoto', this.state.profilePhoto)
+      formData.append('formPayload', JSON.stringify(formPayload))
+      this.props.addNewStudent(formData);
       this.clearForm();
     }
   }
@@ -70,7 +80,6 @@ class NewStudentFormContainer extends Component {
 
     return(
   <form className='student-form'>
-    <h3 className='student-form-header'>New Patient</h3>
     <ul>{errors}</ul>
     <label>First Name
       <input
@@ -116,6 +125,14 @@ class NewStudentFormContainer extends Component {
         type="text"
       />
     </label>
+
+    <label>Client Picture
+      <input
+        type="file"
+        onChange={(e) => this.handleImageChange(e.target.files)}
+      />
+    </label>
+
 
     <button className="submit-button" type="submit" value="Submit" onClick={this.handleSubmit}>Submit</button>
   </form>

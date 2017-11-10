@@ -10,6 +10,7 @@ class SchoolsController < ApplicationController
     @user = current_user
     @users_waiting_for_approval = User.where(school: @school, school_approval: false)
     @approved_users = User.where(school: @school, school_approval: true)
+    @creator = User.find_by(id: @school.creator_id)
   end
 
   def new
@@ -56,7 +57,7 @@ class SchoolsController < ApplicationController
   private
 
   def school_params
-    params.require(:school).permit(:name, :description)
+    params.require(:school).permit(:name, :description, :avatar)
   end
 
 end

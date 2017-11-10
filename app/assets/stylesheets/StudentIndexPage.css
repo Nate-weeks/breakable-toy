@@ -1,21 +1,13 @@
-.toggle-button-false{
-  background-color: #BDEDAF;
+.creator-name{
+  font-size: 2.3rem;
 }
 
-.toggle-button-true{
-  background-color:  #85CFB0;
+div.button-container{
+  text-align: center;
 }
 
-.toggle-button-false:hover{
-  background-color: #BD0711;
-}
-
-.toggle-button-true:hover{
-
-}
-
-.toggle-button-true:focus{
-
+div#app{
+  text-align: center;
 }
 
 div{
@@ -27,14 +19,28 @@ div{
 .student-tile{
   background-color: #89BFC6;
   padding: 2rem;
-  height: 25rem;
+  height: 40rem;
   border: 1rem solid #EEEEEE;
   overflow: overlay;
 }
 
+.student-photo{
+  height: 20rem;
+  border-radius: 50%;
+}
+
+p{
+  font-size: 2rem;
+}
+
+.button.tiny{
+  margin: 0 1rem;
+}
+
 .name{
   text-align: center;
-  text-decoration: underline;
+  font-family: 'Jura', sans-serif;
+  font-weight: bold;
 }
 
 p{
@@ -74,35 +80,19 @@ p.teacher-name{
   text-align: center;
 }
 
+.classroom-title{
+  font-family: 'Jura', sans-serif;
+  font-weight: bold;
+}
+
 .classroom-description{
   font-size: 1.4rem;
 }
 
-/*.classroom-info{
-  background-color: #D67E7F;
-  margin-top: 0;
+textarea{
+  max-width: 100%;
 }
 
-.classroom-name{
-  float: left;
+.transfer{
+  margin-top: 1rem;
 }
-
-.edit-classroom{
-  margin: 0;
-  line-height: 1;
-}
-
-.teachers{
-  text-align: center;
-}
-
-.classroom-description{
-  float: right;
-  display: inline-block;
-}
-
-.teacher-name{
-  float: center;
-  text-align: center;
-  width: 50%;
-}*/

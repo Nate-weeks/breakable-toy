@@ -1,28 +1,8 @@
-.toggle-button-false{
-  background-color: #BDEDAF;
-}
-
-.toggle-button-true{
-  background-color:  #85CFB0;
-}
-
-.toggle-button-false:hover{
-  background-color: #BD0711;
-}
-
-.toggle-button-true:hover{
-
-}
-
-.toggle-button-true:focus{
-
-}
-
 .creator-name{
   font-size: 2.3rem;
 }
 
-div.button-contaier{
+div.button-container{
   text-align: center;
 }
 
@@ -113,32 +93,6 @@ textarea{
   max-width: 100%;
 }
 
-
-/*.classroom-info{
-  background-color: #D67E7F;
-  margin-top: 0;
+.transfer{
+  margin-top: 1rem;
 }
-
-.classroom-name{
-  float: left;
-}
-
-.edit-classroom{
-  margin: 0;
-  line-height: 1;
-}
-
-.teachers{
-  text-align: center;
-}
-
-.classroom-description{
-  float: right;
-  display: inline-block;
-}
-
-.teacher-name{
-  float: center;
-  text-align: center;
-  width: 50%;
-}*/

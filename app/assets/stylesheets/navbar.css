@@ -20,11 +20,11 @@ li a{
 }
 
 .top-bar{
-  height: 3.8rem;
+  height: 3.5rem;
   overflow: auto;
   background-color: #89BFC6;
   margin-left: 2.5rem;
-  margin-top: 1rem;
+  margin-top: .8rem;
 }
 
 a.admistus{

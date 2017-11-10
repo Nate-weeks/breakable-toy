@@ -7,6 +7,8 @@ const StudentTile = props => {
 
   let updateButton = <button className="button tiny" onClick={props.handleStudentUpdateClick}>Update Patient</button>
 
+  let transferButton = <button className="tiny transfer">Transfer Patient</button>
+
 
   return(
     <div className="small-12 medium-6 large-3 cell student-tile">
@@ -17,6 +19,7 @@ const StudentTile = props => {
       <p>Contact Number: {props.contactNumber}</p>
       {deleteButton}
       {updateButton}
+      {transferButton}
     </div>
   )
 

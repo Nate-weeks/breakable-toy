@@ -53,7 +53,6 @@ class ClassroomsController < ApplicationController
   def destroy
     @classroom = Classroom.find(params[:id])
     @school = School.find(params["school_id"])
-    binding.pry
     @classroom.destroy
     redirect_to school_path(@school)
   end

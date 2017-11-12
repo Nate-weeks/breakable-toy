@@ -9,6 +9,7 @@ gem 'webpacker'
 gem 'devise'
 gem 'foundation-rails'
 gem 'carrierwave', '~> 1.0'
+gem "fog"
 group :development do
   gem 'listen', '~> 3.0.5'
   gem 'spring'
@@ -23,6 +24,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   gem 'shoulda'
   gem 'valid_attribute'
+  gem 'dotenv-rails'
 end
 
 group :production do

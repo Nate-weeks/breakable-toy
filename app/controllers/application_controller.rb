@@ -1,7 +1,4 @@
 class ApplicationController < ActionController::Base
-  if @current_user
-    @user = @current_user
-  end
 
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?

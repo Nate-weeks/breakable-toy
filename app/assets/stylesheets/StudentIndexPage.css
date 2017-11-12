@@ -17,9 +17,9 @@ div{
 }
 
 .student-tile{
-  background-color: #89BFC6;
+  background-color: #969696;
   padding: 2rem;
-  height: 40rem;
+  height: 45rem;
   border: 1rem solid #EEEEEE;
   overflow: overlay;
 }

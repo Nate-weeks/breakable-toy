@@ -12,6 +12,7 @@
     overflow: hidden;
     border-radius: 50%;
     background-color: #C0C0C2;
+    border: none;
 }
 
 .new-classroom{
@@ -65,7 +66,7 @@ div.school-info{
 }
 
 .school-image{
-  height: 25rem;
-  width: 50rem;
+  height: 26rem;
+  max-width: 55rem;
   margin-bottom: 1rem;
 }

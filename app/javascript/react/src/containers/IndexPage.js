@@ -52,7 +52,7 @@ class IndexPage extends Component{
         credentials: 'same-origin',
         method: 'PATCH',
         headers: {},
-        body: formPayload
+        body: JSON.stringify(formPayload)
       })
       .then (response => {
         if (response.ok) {

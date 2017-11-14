@@ -65,7 +65,8 @@ class TransferStudentFormContainer extends Component {
     event.preventDefault();
     let formPayload = {
       student_id: this.props.student_id,
-      new_division_id: this.state.divisionValue
+      new_division_id: this.state.divisionValue,
+      current_division_id: this.props.classroom_id
     }
     this.props.transferStudent(formPayload)
     this.clearform()

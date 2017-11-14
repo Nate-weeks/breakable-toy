@@ -4,6 +4,7 @@ import StudentTile from '../components/StudentTile'
 import NewStudentFormContainer from './NewStudentFormContainer'
 import ToggleFormButton from '../components/ToggleFormButton'
 import UpdateStudentFormContainer from './UpdateStudentFormContainer'
+import TransferStudentFormContainer from './TransferStudentFormContainer'
 
 
 class IndexPage extends Component{
@@ -13,13 +14,15 @@ class IndexPage extends Component{
       studentsArray: [],
       toggleNewStudent: false,
       toggleNewStudentClass: 'hollow button',
-      studentBeingEdited: ""
+      studentBeingEdited: "",
+      studentBeingTransferred: ""
     }
     this.addNewStudent = this.addNewStudent.bind(this)
     this.handleToggleNewStudent = this.handleToggleNewStudent.bind(this)
     this.deleteStudent = this.deleteStudent.bind(this)
     this.StudentEditSelect = this.StudentEditSelect.bind(this)
     this.updateStudent = this.updateStudent.bind(this)
+    this.transferStudent = this.transferStudent.bind(this)
   }
 
   componentDidMount() {
@@ -43,6 +46,36 @@ class IndexPage extends Component{
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
     }
+
+    transferStudent(formPayload){
+      fetch(`/api/v1/facilities/${formPayload.new_division_id}`, {
+        credentials: 'same-origin',
+        method: 'PATCH',
+        headers: {},
+        body: formPayload
+      })
+      .then (response => {
+        if (response.ok) {
+          return response;
+        }else {
+          let errorMessage = `${response.status} (${response.statusText})`,
+          error = new Error(errorMessage);
+          throw(error);
+        }
+      })
+      .then(response => response.json())
+      .then(body => {
+        this.setState({
+          studentsArray: body,
+          toggleNewStudent: false,
+          toggleNewStudentClass: 'hollow button',
+          studentBeingEdited: "",
+          studentBeingTransferred: ""
+        })
+      })
+      .catch(error => console.error('Error in fetch: ${error.message}'));
+    }
+
 
     updateStudent(formData){
       let classroom_id = this.props.match.params.id
@@ -108,7 +141,9 @@ class IndexPage extends Component{
       if (this.state.toggleNewStudent == false) {
         this.setState({
           toggleNewStudent: true,
-          toggleNewStudentClass: 'button success'
+          toggleNewStudentClass: 'button success',
+          studentBeingTransferred: "",
+          studentBeingEdited: ""
          })
       } else {
         this.setState({
@@ -122,9 +157,19 @@ class IndexPage extends Component{
       this.setState ({
         studentBeingEdited: student_id,
         toggleNewStudent: false,
-        toggleNewStudentClass: 'hollow button'
+        toggleNewStudentClass: 'hollow button',
+        studentBeingTransferred: ""
       })
       console.log(this.state.studentBeingEdited)
+    }
+
+    StudentTransferSelect(student_id){
+      this.setState ({
+        studentBeingTransferred: student_id,
+        studentBeingEdited: "",
+        toggleNewStudent: false,
+        toggleNewStudentClass: 'hollow button'
+      })
     }
 
 
@@ -156,6 +201,15 @@ class IndexPage extends Component{
     />
     }
 
+    let transferStudentForm;
+    if (this.state.studentBeingTransferred != "") {
+      transferStudentForm =
+      <TransferStudentFormContainer
+      classroom_id={this.props.match.params.id}
+      student_id={this.state.studentBeingTransferred}
+      transferStudent={this.transferStudent} />
+    }
+
     let students = this.state.studentsArray.map(student => {
       let handleDeleteStudent = () => {
         this.deleteStudent(student.id)
@@ -163,6 +217,10 @@ class IndexPage extends Component{
 
     let handleStudentEditSelect = () => {
       this.StudentEditSelect(student.id)
+    }
+
+    let handleStudentTransferSelect = () => {
+      this.StudentTransferSelect(student.id)
     }
 
       return(
@@ -177,6 +235,7 @@ class IndexPage extends Component{
           picture = {student.avatar.url}
           handleClick = {handleDeleteStudent}
           handleStudentUpdateClick = {handleStudentEditSelect}
+          handleStudentTransferClick = {handleStudentTransferSelect}
         />
       )
     })
@@ -186,6 +245,7 @@ class IndexPage extends Component{
         {toggleFormButton}
         {newStudentForm}
         {updateStudentForm}
+        {transferStudentForm}
         <h1>Patients:</h1>
 
         <div className="grid-x">

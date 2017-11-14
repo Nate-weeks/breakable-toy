@@ -7,7 +7,7 @@ const StudentTile = props => {
 
   let updateButton = <button className="button tiny" onClick={props.handleStudentUpdateClick}>Update Patient</button>
 
-  let transferButton = <button className="tiny transfer">Transfer Patient</button>
+  let transferButton = <button className="tiny transfer" onClick={props.handleStudentTransferClick}>Transfer Patient</button>
 
 
   return(

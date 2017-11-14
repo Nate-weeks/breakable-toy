@@ -96,3 +96,9 @@ textarea{
 .transfer{
   margin-top: 1rem;
 }
+
+div.dropdown{
+  width: 30%;
+  display:block;
+  margin: 0 auto;
+}

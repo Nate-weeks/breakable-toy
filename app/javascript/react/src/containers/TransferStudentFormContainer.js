@@ -11,6 +11,8 @@ class TransferStudentFormContainer extends Component {
     }
     this.handleFacilityChange = this.handleFacilityChange.bind(this)
     this.handleDivisionChange = this.handleDivisionChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.clearform = this.clearform.bind(this)
   }
 
   componentDidMount(){
@@ -51,6 +53,24 @@ class TransferStudentFormContainer extends Component {
     })
   }
 
+  clearform(){
+    this.setState({
+      facilities: [],
+      facilityValue: "",
+      divisionValue: ""
+    })
+  }
+
+  handleSubmit(event){
+    event.preventDefault();
+    let formPayload = {
+      student_id: this.props.student_id,
+      new_division_id: this.state.divisionValue
+    }
+    this.props.transferStudent(formPayload)
+    this.clearform()
+  }
+
 
   render(){
     console.log(this.state.divisionValue)
@@ -60,16 +80,21 @@ class TransferStudentFormContainer extends Component {
       )
     }
 
-    let transferDivisionForm
-    if (transferFacility) {
-      transferDivisionForm = <select value={this.state.divisionValue} onChange={this.handleDivisionChange}> {transferFacility[0].divisions.map(division => <option key={division.id} value={division.name}>{division.name}</option>
-      )};
-      </select>
-    }
-
-    let transferFacilityForm = <select value={this.state.facilityValue} onChange={this.handleFacilityChange}> {this.state.facilities.map(facility => <option key={facility.id} value={facility.name}>{facility.name}</option>
+    let transferFacilityForm =  <select value={this.state.facilityValue} onChange={this.handleFacilityChange}> {this.state.facilities.map(facility => <option key={facility.id} value={facility.name}>{facility.name}</option>
     )};
     </select>
+
+    let transferDivisionForm
+    if (transferFacility) {
+      transferDivisionForm = <form onSubmit={this.handleSubmit}>
+      <select value={this.state.divisionValue} onChange={this.handleDivisionChange}> {transferFacility[0].divisions.map(division => <option key={division.id} value={division.id}>{division.name}</option>
+      )};
+      </select>
+      <input type="submit" value="Submit" />
+      </form>
+    }
+
+
 
 
 

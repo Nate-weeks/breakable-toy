@@ -21,4 +21,12 @@ class Api::V1::FacilitiesController < ApplicationController
 
     render json: return_object
   end
+
+  def create
+
+  end
+
+  def update
+    binding.pry
+  end
 end

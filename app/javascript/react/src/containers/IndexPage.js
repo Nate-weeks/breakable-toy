@@ -22,6 +22,7 @@ class IndexPage extends Component{
     this.deleteStudent = this.deleteStudent.bind(this)
     this.StudentEditSelect = this.StudentEditSelect.bind(this)
     this.updateStudent = this.updateStudent.bind(this)
+    this.transferStudent = this.transferStudent.bind(this)
   }
 
   componentDidMount() {
@@ -45,6 +46,36 @@ class IndexPage extends Component{
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
     }
+
+    transferStudent(formPayload){
+      fetch(`/api/v1/facilities/${formPayload.new_division_id}`, {
+        credentials: 'same-origin',
+        method: 'PATCH',
+        headers: {},
+        body: formPayload
+      })
+      .then (response => {
+        if (response.ok) {
+          return response;
+        }else {
+          let errorMessage = `${response.status} (${response.statusText})`,
+          error = new Error(errorMessage);
+          throw(error);
+        }
+      })
+      .then(response => response.json())
+      .then(body => {
+        this.setState({
+          studentsArray: body,
+          toggleNewStudent: false,
+          toggleNewStudentClass: 'hollow button',
+          studentBeingEdited: "",
+          studentBeingTransferred: ""
+        })
+      })
+      .catch(error => console.error('Error in fetch: ${error.message}'));
+    }
+
 
     updateStudent(formData){
       let classroom_id = this.props.match.params.id
@@ -175,7 +206,7 @@ class IndexPage extends Component{
       transferStudentForm =
       <TransferStudentFormContainer
       classroom_id={this.props.match.params.id}
-      student_id={this.state.studentBeingEdited}
+      student_id={this.state.studentBeingTransferred}
       transferStudent={this.transferStudent} />
     }
 

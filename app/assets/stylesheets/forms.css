@@ -12,6 +12,7 @@ form.new_user{
 
 .actions{
   margin-left: 14.3rem;
+  margin: 0 auto;
 }
 
 label{
@@ -40,8 +41,4 @@ label{
 
 .log-in{
   text-align: center;
-}
-
-.actions{
-  margin: 0 auto;
 }

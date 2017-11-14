@@ -27,6 +27,16 @@ class Api::V1::FacilitiesController < ApplicationController
   end
 
   def update
-    binding.pry
+    payload = JSON.parse(request.body.read)
+    new_division_id = params["id"]
+    classroom = Classroom.find_by(id: payload["current_division_id"])
+
+    patient = Student.find_by(id: payload["student_id"])
+    patient.update(classroom_id: new_division_id)
+
+    studentArray = Student.where(classroom_id: classroom.id)
+
+    render json: studentArray
+
   end
 end

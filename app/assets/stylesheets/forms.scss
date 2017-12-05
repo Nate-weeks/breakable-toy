@@ -16,7 +16,17 @@ form.new_user{
 }
 
 label{
-  font-size: 2rem;
+  font-size: 1.5rem;
+}
+
+textarea{
+  max-width: 100%;
+  min-height: 100px;
+}
+
+
+h1.new-facility{
+  font-size: 2.6rem;
 }
 
 .edit-name{
@@ -41,4 +51,9 @@ label{
 
 .log-in{
   text-align: center;
+}
+
+.register{
+  text-align: center;
+  margin-right: 3rem;
 }

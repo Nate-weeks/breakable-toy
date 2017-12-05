@@ -1,6 +1,6 @@
 <div class="grid-x">
   <div class="large-4 large-offset-4 cell">
-    <h1 class="new-facility">New Facility</h1>
+    <h2 class="new-facility">New Facility</h2>
     <% if @form_errors %>
       <% @form_errors.each do |error| %>
         <p><%= error %></p>
@@ -26,7 +26,7 @@
       </div>
 
       <div class="actions">
-        <%= s.button "Add Facility" %>
+        <%= s.button "Add Facility", class: "button small" %>
       </div>
 
     <% end %>

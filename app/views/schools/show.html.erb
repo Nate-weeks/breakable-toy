@@ -4,7 +4,7 @@
     <div class="small-12 medium-6 large-3 cell school-info users">
       <h3> Creator: </h3>
       <div class="image-cropper">
-        <img class="creator-image"src=<%= @creator.avatar %>/>
+        <img class="creator-image" src=<%=@creator.avatar %>/>
       </div>
       <p class="creator"><%= @creator.first_name %>  <%= @creator.last_name %></p>
       <% if @user.id == @school.creator_id %>
@@ -22,10 +22,10 @@
 
 
     <div class="small-12 medium-6 large-3 cell school-info users">
-      <h2>Approved Users:</h2>
+      <h3>Approved Users:</h3>
       <% @approved_users.each do |user| %>
         <div class="image-cropper">
-          <img class="creator-image"src= <%= user.avatar %>/>
+          <img class="creator-image"src=<%=@user.avatar %>/>
         </div>
         <p class="approved-users"><%= user.first_name %> <%= user.last_name %></p>
         <% if @user.id == @school.creator_id %>
@@ -34,7 +34,6 @@
       <% end %>
       <h3>Unapproved Users:</h3>
       <% @users_waiting_for_approval.each do |user| %>
-
       <p><%= user.first_name %> <%= user.last_name %></p>
         <% if @user.id == @school.creator_id %>
         <%= link_to 'approve user', update_school_approval_school_user_path(@school, user.id), method: :patch, class: "button tiny" %>
@@ -50,7 +49,7 @@
   </div>
 
     <div class="new-classroom">
-      <%= link_to "Add A New Division", new_school_classroom_path(params[:id]), class: "button large" %>
+      <%= link_to "Add A New Division", new_school_classroom_path(params[:id]), class: "button medium" %>
     </div>
 
     <div class="grid-margin-x">
@@ -62,7 +61,7 @@
           <% else %>
           <p class="member-message">you are a member</p>
         <% end %>
-        <h4>Description: <%= classroom.description %></h4>
+        <p class="school=description">Description: <%= classroom.description %></h4>
       </div>
         <% end %>
 

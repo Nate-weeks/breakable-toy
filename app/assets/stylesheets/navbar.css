@@ -2,7 +2,7 @@ li{
   list-style-type: none;
   display: inline-block;
   float: right;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   padding-right: 4rem;
 }
 
@@ -20,17 +20,24 @@ li a{
 }
 
 .top-bar{
-  height: 3.5rem;
+  height: 3.6rem;
   overflow: auto;
   background-color: #89BFC6;
-  margin-left: 2.5rem;
+  margin-left: 0.7rem;
   margin-top: .8rem;
 }
 
 a.admistus{
-  font-size: 3rem;
+  font-size: 3.4rem;
   margin-bottom: 0;
   color: black;
   font-family: 'Jura', sans-serif;
   font-weight: bold;
+  margin-left: 0rem;
+  text-align: center;
+}
+
+div.admistus{
+  margin-left: 14.3rem;
+  margin-right: 3rem;
 }

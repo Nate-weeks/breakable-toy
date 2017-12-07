@@ -12,10 +12,21 @@ form.new_user{
 
 .actions{
   margin-left: 14.3rem;
+  margin: 0 auto;
 }
 
 label{
-  font-size: 2rem;
+  font-size: 1.5rem;
+}
+
+textarea{
+  max-width: 100%;
+  min-height: 100px;
+}
+
+
+h1.new-facility{
+  font-size: 2.6rem;
 }
 
 .edit-name{
@@ -42,6 +53,7 @@ label{
   text-align: center;
 }
 
-.actions{
-  margin: 0 auto;
+.register{
+  text-align: center;
+  margin-right: 3rem;
 }

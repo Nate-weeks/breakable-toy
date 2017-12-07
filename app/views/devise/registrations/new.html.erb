@@ -1,6 +1,6 @@
 <div class="grid-x">
   <div class="large-4 large-offset-4 cell">
-    <h2>Sign up</h2>
+    <h3 class="register">Sign up</h3>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= devise_error_messages! %>
@@ -47,7 +47,7 @@
 
 
       <div class="actions">
-        <%= f.submit "Sign up", class: "button large" %>
+        <%= f.submit "Sign up", class: "button medium" %>
       </div>
 
     <% end %>

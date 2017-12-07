@@ -4,6 +4,7 @@
 
 div.button-container{
   text-align: center;
+  margin-top: 1rem;
 }
 
 div#app{
@@ -19,18 +20,14 @@ div{
 .student-tile{
   background-color: #969696;
   padding: 2rem;
-  height: 45rem;
+  height: 37rem;
   border: 1rem solid #EEEEEE;
   overflow: overlay;
 }
 
 .student-photo{
-  height: 20rem;
+  height: 13rem;
   border-radius: 50%;
-}
-
-p{
-  font-size: 2rem;
 }
 
 .button.tiny{
@@ -86,11 +83,7 @@ p.teacher-name{
 }
 
 .classroom-description{
-  font-size: 1.4rem;
-}
-
-textarea{
-  max-width: 100%;
+  font-size: 1rem;
 }
 
 .transfer{

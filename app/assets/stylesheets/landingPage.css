@@ -18,7 +18,7 @@ div.grid-margin-x{
 
 .create-new-school {
   padding: 0.35rem;
-  font-size: 2.5rem;
+  font-size: 2.3rem;
   color: #363636;
   border: 1px solid black;
   background-color: #85CFB0;
@@ -35,19 +35,24 @@ a.create-new-school {
 
 .back-button{
   float: left;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   color: black;
   margin-left: 3rem;
+}
+
+p.school-description{
+  font-size: 1rem;
 }
 
 a.join-school{
   color: black;
   font-family: 'Jura', sans-serif;
   font-weight: bold;
+  font-size: 2.5rem;
 }
 
 .organizations{
-  height: 400px;
+  height: 350px;
   border: 1px solid black;
   margin: 2.5rem;
   padding: .5rem;

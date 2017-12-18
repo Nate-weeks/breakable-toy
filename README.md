@@ -1,6 +1,6 @@
 # README
 
-#Admistus
+## Admistus
 
 Admistus is an organizational app for Administrators or Mental Health Workers to share client data between organizations.
 

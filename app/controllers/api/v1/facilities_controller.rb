@@ -22,10 +22,6 @@ class Api::V1::FacilitiesController < ApplicationController
     render json: return_object
   end
 
-  def create
-
-  end
-
   def update
     payload = JSON.parse(request.body.read)
     new_division_id = params["id"]

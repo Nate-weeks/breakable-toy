@@ -6,9 +6,6 @@ Admistus is an organizational app for Administrators or Mental Health Workers to
 
 ---
 
-## Contributors
-* [Nate Weeks](https://github.com/Nate-weeks)
-
 ## Features
 
 A user can create an account on Admistus and then view and create facilities and sub-divisions.  For each facility and sub-division you create, you have the ability to approve and remove users from the facility.  A user can't view any information other than the list and description of facilities until they are approved by the facility creator.  This is to control access to within each facility-division, where sensitive client information is stored.  Any user approved to view client information in a division can add clients, edit client data, and transfer clients from one division to another.
